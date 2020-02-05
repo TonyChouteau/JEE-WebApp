@@ -1,7 +1,5 @@
 # Java Web Application using Embedded Tomcat
 
-* 
-
 ## Prerequisites
 
 * Download Maven : 
