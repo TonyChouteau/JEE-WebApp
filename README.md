@@ -17,7 +17,7 @@ Windows : Setting global environment variables add the "<path_to_maven>\bin" to 
 > mvn package
 
 * Then to start the server :
-> sh target/bin/webapp (on Linux) >
+> sh target/bin/webapp (on Linux)
 
 OR 
 
