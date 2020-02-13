@@ -15,11 +15,25 @@ import javax.servlet.http.HttpServletResponse;
     )
 public class HelloServlet extends HttpServlet {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         ServletOutputStream out = resp.getOutputStream();
-        out.write("hello heroku Test".getBytes());
+        out.print("<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'	'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>" +
+                  "<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>" +
+                  "    <head>" +
+                  "        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>" +
+                  "        <title>Fluffy Gaming Center</title>" +
+                  "        <link rel='stylesheet' href='style.css' type='text/css' media='screen' charset='utf-8'/>" +
+                  "    </head>" +
+                  "    <body>" +
+                  "    </body>" +
+                  "</html>");
         out.flush();
         out.close();
     }

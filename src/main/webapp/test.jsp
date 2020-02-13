@@ -2,7 +2,7 @@
 <html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
     <head>
         <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-        <title>Fluffy Gaming dCenterT</title>
+        <title>TESTTTdazdazd</title>
         <link rel='stylesheet' href='style.css' type='text/css' media='screen' charset='utf-8'/>
     </head>
     <body>

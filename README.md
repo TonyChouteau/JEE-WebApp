@@ -1,30 +1,24 @@
-# Java Web Application using Embedded Tomcat
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+# Create a Java Web Application using Embedded Tomcat
+
+This tutorial will show you how to create a simple Java web application using embedded Tomcat.
 
 ## Prerequisites
 
-* Download Maven : 
+* Basic Java knowledge, including an installed version of the JVM and Maven.
+* Basic Git knowledge, including an installed version of Git.
+* A Java web application. If you don't have one follow the first step to create an example. Otherwise skip that step.
 
-http://mirrors.standaloneinstaller.com/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
+## Skip The Application Creation
 
-* Add to the path environement :
+If you want to skip the creation steps you can clone the finished sample and then skip to the 'Deploy Your Application to Heroku' section:
 
-Linux : export PATH=$PATH:<path_to_maven>/bin
+```
+$ git clone git@github.com:heroku/devcenter-embedded-tomcat.git
+```
 
-Windows : Setting global environment variables add the "<path_to_maven>\bin" to the variable "Path"
+## Follow the Guide
 
-## Once it's done
+If you would like to create the application yourself, then follow the Dev Center guide on how to [Create a Java Web Application using Embedded Tomcat](https://devcenter.heroku.com/articles/create-a-java-web-application-using-embedded-tomcat).
 
-* Go into your project directory and run :
 
-> mvn package
-
-* Then to start the server :
-
-> sh target/bin/webapp (on Linux)
-
-OR 
-
-> target/bin/webapp.bat (on Windows)
-
-## Reference
-https://devcenter.heroku.com/articles/create-a-java-web-application-using-embedded-tomcat
