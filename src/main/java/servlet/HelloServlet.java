@@ -2,8 +2,8 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,12 +20,22 @@ public class HelloServlet extends HttpServlet {
      */
     private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    private void doProcess(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        ServletOutputStream out = resp.getOutputStream();
-        out.print("fafza");
-        out.flush();
-        out.close();
+                String pageName = "/profile.jsp";
+                RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
+                try {
+                    rd.forward(req, resp);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
     }
+
+    public void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req);
+        doProcess(req, resp);
+    }
+
+
+
 }
