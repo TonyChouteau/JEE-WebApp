@@ -4,16 +4,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.io.*;
 
 public class DB implements DBInt {
 
     private Connection connect;
     private static DB instance;
 
+    
+
+
     private DB() {
         try {
             System.out.println(1);
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com/mysql/jdbc.Driver");
             System.out.println(2);
         
             connect = DriverManager.getConnection("jdbc:mysql://vps.tonychouteau.fr:3306/jee", "FluffyCorp", "FluffyWord");
