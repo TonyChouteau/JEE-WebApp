@@ -3,19 +3,10 @@ package servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet (
-    name = "players",
-    urlPatterns = {
-       "/player/*",
-       "/listPlayers",
-       "/getListPlayers"
-    }
-)
 public class Players extends HttpServlet {
     
     private final static long serialVersionUID = 1L;

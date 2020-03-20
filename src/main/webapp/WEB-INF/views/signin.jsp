@@ -102,12 +102,11 @@
 
 <body>
     <div>
-        <img id="logo" src="/ressources/logo.png">
+        <img id="logo" src="/ressources/img/logo.png">
     </div>
     <div id="login-page">
         <div id="login-panel">
-            <form method="POST" action="/signin">
-
+            <form method="POST" action=".">
                 <h1 id="title-login" class="centered-text">
                     Connexion
                 </h1>
@@ -121,8 +120,7 @@
                 </h3>
                 <input class="login-input" type="password" id="fpassword" name="password" placeholder="">
                 <h1></h1>
-                <input class="login-button" type="submit" value="login" />
-
+                <input class="login-button" type="submit" value="Login" />
             </form>
             <h4>
                 <span>Not registered ?</span> <a href="./signup.html" style="color:rgb(235, 66, 223);">Sign up</a>

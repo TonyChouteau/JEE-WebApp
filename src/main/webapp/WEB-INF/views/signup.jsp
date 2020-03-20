@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap" rel="stylesheet">
     <title>Fluffy Gaming Center</title>
     <style>
         html,
@@ -14,26 +14,28 @@
             background: linear-gradient(45deg, rgba(171, 28, 161, 1) 0%, rgba(184, 0, 255, 1) 100%);
             min-height: 100vh;
             width: 100vw;
-            color: black;/*rgb(223, 25, 209);*/
+            color: black;
+            /*rgb(223, 25, 209);*/
             font-family: 'Josefin Slab', serif;
         }
-        #logo{
+        
+        #logo {
             position: absolute;
-            width : 7vh;
+            width: 7vh;
             height: 7vh;
         }
+        
         #login-page {
             margin: 0;
             padding: 0;
             background: transparent;
             width: 100vw;
             height: 100vh;
-
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
+        
         #login-panel {
             margin: 0;
             padding: 0;
@@ -47,15 +49,18 @@
             text-align: center;
             justify-content: center;
         }
-        #centered-text{
+        
+        #centered-text {
             margin: 0;
             padding: 0;
         }
-        #title-login{
+        
+        #title-login {
             margin: 0;
             padding: 10px;
         }
-        .register-input{
+        
+        .register-input {
             margin: 0;
             padding: 0;
             background: rgb(228, 228, 228);
@@ -67,9 +72,10 @@
             text-align: center;
             border-radius: 5px;
         }
-        .register-button{
+        
+        .register-button {
             font-family: 'Josefin Slab', serif;
-            font-size:larger;
+            font-size: larger;
             margin: 0;
             padding: 0;
             background: rgb(228, 228, 228);
@@ -80,21 +86,21 @@
             border: 0;
             text-align: center;
             border-radius: 5px;
-            color:rgb(235, 66, 223);
+            color: rgb(235, 66, 223);
         }
-        .register-button:hover{
+        
+        .register-button:hover {
             background: rgb(233, 233, 233);
         }
         
-        .register-button:active{
+        .register-button:active {
             background: rgb(235, 66, 223);
             color: white;
         }
     </style>
     <script type="text/javascript">
-        function verifySecondPassword()
-        {
-            if (document.getElementById("fpassword1").value != document.getElementById("fpassword2").value){
+        function verifySecondPassword() {
+            if (document.getElementById("fpassword1").value != document.getElementById("fpassword2").value) {
                 document.getElementById("fpassword2").style["border"] = "1px solid red";
             } else {
                 document.getElementById("fpassword2").style["border"] = "0px #00000000";
@@ -105,39 +111,41 @@
 
 <body>
     <div>
-        <img id="logo" src="../ressources/logo.png">
+        <img id="logo" src="/ressources/img/logo.png">
     </div>
     <div id="login-page">
         <div id="login-panel">
-            <h1 id="title-login" class="centered-text">
-                Create an account
-            </h1>
-            <h3 class="centered-text">
-                E-mail :
-            </h3>
-            <input class="register-input" type="email" id="femail" name="email" placeholder="">
+            <form method="POST" action=".">
+                <h1 id="title-login" class="centered-text">
+                    Create an account
+                </h1>
+                <h3 class="centered-text">
+                    E-mail :
+                </h3>
+                <input class="register-input" type="email" id="femail" name="email" placeholder="">
 
-            <h3 class="centered-text">
-                Username :
-            </h3>
-            <input class="register-input" type="text" id="fusername" name="username" placeholder="">
+                <h3 class="centered-text">
+                    Username :
+                </h3>
+                <input class="register-input" type="text" id="fusername" name="username" placeholder="">
 
-            <h3 class="centered-text">
-                Birthday :
-            </h3>
-            <input class="register-input" type="date" id="fbirthday" name="birthday" placeholder="">
+                <h3 class="centered-text">
+                    Birthday :
+                </h3>
+                <input class="register-input" type="date" id="fbirthday" name="birthday" placeholder="">
 
-            <h3 class="centered-text">
-                Password :
-            </h3>
-            <input class="register-input" type="password" id="fpassword1" name="password" placeholder="">
+                <h3 class="centered-text">
+                    Password :
+                </h3>
+                <input class="register-input" type="password" id="fpassword1" name="password" placeholder="">
 
-            <h3 class="centered-text">
-                Confirm password :
-            </h3>
-            <input class="register-input" type="password" id="fpassword2" onchange="verifySecondPassword()" name="password" placeholder="">
-            <h1></h1>
-            <button class="register-button" type="button" onclick="">Register</button>
+                <h3 class="centered-text">
+                    Confirm password :
+                </h3>
+                <input class="register-input" type="password" id="fpassword2" onchange="verifySecondPassword()" name="password" placeholder="">
+                <h1></h1>
+                <input class="register-button" type="submit" value="Register" />
+            </form>
             <h4>
                 <span>Already registered ?</span> <a href="./signin.html" style="color:rgb(235, 66, 223);">Sign in</a>
             </h4>

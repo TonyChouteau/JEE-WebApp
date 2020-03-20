@@ -42,8 +42,8 @@
             width: 1200px;
             height: 50px;
             display: flex;
-			flex-direction : column-reverse;
-            text-align: end;
+			flex-direction : row;
+            text-align: center;
             justify-content: center;
         }
         
@@ -55,8 +55,8 @@
             width: 1200px;
             display: flex;
             flex-direction: column;
-            text-align: center;
-            justify-content: center;
+            text-align: start;
+            justify-content: start;
         }
         
         #centered-text {
@@ -69,8 +69,22 @@
             width: 100%;
             height: 400px;
         }
+        #menu {
+            width: 80%;
+            height: 100%;
+			font-size: 20px;
+            display: flex;
+			flex-direction : row;
+            text-align: center;
+            justify-content: center;
+        }
+        .menu-item{
+            margin-left: 50px;
+            margin-right: 50px;
+        }
         #title {
-            margin: 20px;
+            width: 20%;
+            height: 100%;
 			font-size: 20px;
         }
 
@@ -78,14 +92,33 @@
             width: 100%;
             height: 400px;
         }
+        #verticalSeparator{
+            height: 100%;
+            width : 1px;
+            background-color: black;
+        }
     </style>
 </head>
 
 <body>
     <div id="page">
         <div id="menu-panel">
+            <h1 id="menu">
+                <div class="menu-item">
+                    Profile
+                </div>
+                <div class="menu-item">
+                    Games
+                </div>
+                <div class="menu-item">
+                    Test 3
+                </div>
+            </h1>
+            <div id="verticalSeparator"></div>
             <h1 id="title">
-                <%=username%>
+                <div>
+                    <%=username%>
+                </div>
             </h1>
         </div>
         <div id="content-panel">

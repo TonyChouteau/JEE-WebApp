@@ -4,20 +4,10 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
- @WebServlet (
-     name = "connect",
-     urlPatterns = {
-        "/signup",
-        "/signin",
-        "/signout",
-        "/editProfile"
-     }
- )
 
 public class Connect extends HttpServlet {
 
@@ -48,7 +38,7 @@ public class Connect extends HttpServlet {
     }
 
     private void renderSignin (HttpServletRequest req, HttpServletResponse resp) {
-        String pageName = "/html/signin.jsp";
+        String pageName = "/WEB-INF/views/signin.jsp";
         RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
         try {
             rd.forward(req, resp);
@@ -58,7 +48,7 @@ public class Connect extends HttpServlet {
     }
 
     private void testSignin (HttpServletRequest req, HttpServletResponse resp) {
-        String pageName = "/html/signin.jsp";
+        String pageName = "/WEB-INF/views/signin.jsp";
         RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
         try {
             rd.forward(req, resp);

@@ -1,0 +1,61 @@
+<web-app>
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <servlet-class>servlet.Admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>connect</servlet-name>
+        <servlet-class>servlet.Connect</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>highscores</servlet-name>
+        <servlet-class>servlet.Highscores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>play</servlet-name>
+        <servlet-class>servlet.Play</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>players</servlet-name>
+        <servlet-class>servlet.Players</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/ban</url-pattern>
+        <url-pattern>/unban</url-pattern>
+        <url-pattern>/addGame</url-pattern>
+        <url-pattern>/removeGame</url-pattern>
+        <url-pattern>/endGame</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>connect</servlet-name>
+        <url-pattern>/signin</url-pattern>
+        <url-pattern>/signup</url-pattern>
+        <url-pattern>/signout</url-pattern>
+        <url-pattern>/editProfile</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>highscores</servlet-name>
+        <url-pattern>/submitScore</url-pattern>
+        <url-pattern>/pastGames</url-pattern>
+        <url-pattern>/getPastGames</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>play</servlet-name>
+        <url-pattern>/play/*</url-pattern>
+        <url-pattern>/currentGames</url-pattern>
+        <url-pattern>/getCurrentGames</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>players</servlet-name>
+        <url-pattern>/player/*</url-pattern>
+        <url-pattern>/listPlayers</url-pattern>
+        <url-pattern>/getListPlayers</url-pattern>
+    </servlet-mapping>
+
+</web-app>
