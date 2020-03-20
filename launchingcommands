@@ -1,3 +1,0 @@
-mvn package
-target/bin/webapp.bat
-sh target/bin/webapp
