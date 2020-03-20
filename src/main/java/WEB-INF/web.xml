@@ -1,0 +1,12 @@
+
+çaze
+<web-app>
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <servlet-class>servlet.Admin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/bonjour</url-pattern>
+    </servlet-mapping>
+</web-app>
