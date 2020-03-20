@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet (
-    name = "play",
+    name = "play", 
     urlPatterns = {
        "/",
        "/play/*",
