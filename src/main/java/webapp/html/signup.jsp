@@ -123,6 +123,11 @@
             <input class="register-input" type="text" id="fusername" name="username" placeholder="">
 
             <h3 class="centered-text">
+                Birthday :
+            </h3>
+            <input class="register-input" type="date" id="fbirthday" name="birthday" placeholder="">
+
+            <h3 class="centered-text">
                 Password :
             </h3>
             <input class="register-input" type="password" id="fpassword1" name="password" placeholder="">
