@@ -21,3 +21,14 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+*.class
+target/
+tomcat.8080/
+target/*
+tomcat.8080/*
+mvnw
+mvnw.cmd
+Procfile
+launchingcommands
+.vscode/

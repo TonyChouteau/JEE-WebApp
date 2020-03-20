@@ -48,7 +48,7 @@ public class Connect extends HttpServlet {
     }
 
     private void renderSignin (HttpServletRequest req, HttpServletResponse resp) {
-        String pageName = "/signin.jsp";
+        String pageName = "/html/signin.jsp";
         RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
         try {
             rd.forward(req, resp);
