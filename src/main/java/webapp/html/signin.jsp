@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap" rel="stylesheet">
     <title>Fluffy Gaming Center</title>
     <style>
         html,
@@ -14,26 +14,28 @@
             background: linear-gradient(45deg, rgb(192, 80, 186) 0%, rgba(184, 0, 255, 1) 100%);
             min-height: 100vh;
             width: 100vw;
-            color: black;/*rgb(223, 25, 209);*/
+            color: black;
+            /*rgb(223, 25, 209);*/
             font-family: 'Josefin Slab', serif;
         }
-        #logo{
+        
+        #logo {
             position: absolute;
-            width : 7vh;
+            width: 7vh;
             height: 7vh;
         }
+        
         #login-page {
             margin: 0;
             padding: 0;
             background: transparent;
             width: 100vw;
             height: 100vh;
-
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
+        
         #login-panel {
             margin: 0;
             padding: 0;
@@ -47,15 +49,18 @@
             text-align: center;
             justify-content: center;
         }
-        #centered-text{
+        
+        #centered-text {
             margin: 0;
             padding: 0;
         }
-        #title-login{
+        
+        #title-login {
             margin: 0;
             padding: 10px;
         }
-        .login-input{
+        
+        .login-input {
             margin: 0;
             padding: 0;
             background: rgb(228, 228, 228);
@@ -67,9 +72,10 @@
             text-align: center;
             border-radius: 5px;
         }
-        .login-button{
+        
+        .login-button {
             font-family: 'Josefin Slab', serif;
-            font-size:larger;
+            font-size: larger;
             margin: 0;
             padding: 0;
             background: rgb(228, 228, 228);
@@ -80,13 +86,14 @@
             border: 0;
             text-align: center;
             border-radius: 5px;
-            color:rgb(235, 66, 223);
+            color: rgb(235, 66, 223);
         }
-        .login-button:hover{
+        
+        .login-button:hover {
             background: rgb(233, 233, 233);
         }
         
-        .login-button:active{
+        .login-button:active {
             background: rgb(235, 66, 223);
             color: white;
         }
@@ -95,24 +102,28 @@
 
 <body>
     <div>
-        <img id="logo" src="../ressources/logo.png">
+        <img id="logo" src="/ressources/logo.png">
     </div>
     <div id="login-page">
         <div id="login-panel">
-            <h1 id="title-login" class="centered-text">
-                Connexion
-            </h1>
-            <h3 class="centered-text">
-                Username :
-            </h3>
-            <input class="login-input" type="text" id="fusername" name="username" placeholder="">
+            <form method="POST" action="/signin">
 
-            <h3 class="centered-text">
-                Password :
-            </h3>
-            <input class="login-input" type="password" id="fpassword" name="password" placeholder="">
-            <h1></h1>
-            <button class="login-button" type="button" onclick="">Login</button>
+                <h1 id="title-login" class="centered-text">
+                    Connexion
+                </h1>
+                <h3 class="centered-text">
+                    Username :
+                </h3>
+                <input class="login-input" type="text" id="fusername" name="username" placeholder="">
+
+                <h3 class="centered-text">
+                    Password :
+                </h3>
+                <input class="login-input" type="password" id="fpassword" name="password" placeholder="">
+                <h1></h1>
+                <input class="login-button" type="submit" value="login" />
+
+            </form>
             <h4>
                 <span>Not registered ?</span> <a href="./signup.html" style="color:rgb(235, 66, 223);">Sign up</a>
             </h4>

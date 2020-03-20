@@ -58,7 +58,13 @@ public class Connect extends HttpServlet {
     }
 
     private void testSignin (HttpServletRequest req, HttpServletResponse resp) {
-
+        String pageName = "/html/signin.jsp";
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
+        try {
+            rd.forward(req, resp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -66,6 +72,7 @@ public class Connect extends HttpServlet {
     }
 
     public void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("ok boomer");
         doProcess(req, resp, "POST");
     }
 }
