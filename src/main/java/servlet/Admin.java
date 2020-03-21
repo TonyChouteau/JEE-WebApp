@@ -1,5 +1,7 @@
 package servlet;
 
+import data.DB;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -82,6 +84,12 @@ public class Admin extends HttpServlet {
     }
 
     private void getBan(HttpServletRequest req, HttpServletResponse resp) {
+
+        DB d = DB.getInstance();
+
+
+        System.out.println(d.truc());
+
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
