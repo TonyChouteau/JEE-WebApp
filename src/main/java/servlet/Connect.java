@@ -19,17 +19,28 @@ public class Connect extends HttpServlet {
 
         switch (uri) {
             case "/signin":
-                if (mode == "GET") {
-                    renderSignin(req, resp);
-                } else if (mode == "POST") {
-                    testSignin(req, resp);
-                }
+                if (mode == "GET")
+                    getSignin(req, resp);
+                else if (mode == "POST")
+                    postSignin(req, resp);
                 break;
             case "/signup":
+                if (mode == "GET")
+                    getSignup(req, resp);
+                else if (mode == "POST")
+                    postSignup(req, resp);
                 break;
             case "/signout":
+                if (mode == "GET")
+                    getSignout(req, resp);
+                else if (mode == "POST")
+                    postSignout(req, resp);
                 break;
             case "/editProfile":
+                if (mode == "GET")
+                    getEditProfile(req, resp);
+                else if (mode == "POST")
+                    postEditProfile(req, resp);
                break;
             default :
                 System.out.println("URI non reconnue : " + uri);
@@ -37,7 +48,25 @@ public class Connect extends HttpServlet {
         }
     }
 
-    private void renderSignin (HttpServletRequest req, HttpServletResponse resp) {
+    private void postEditProfile(HttpServletRequest req, HttpServletResponse resp) {
+    }
+
+    private void getEditProfile(HttpServletRequest req, HttpServletResponse resp) {
+    }
+
+    private void postSignout(HttpServletRequest req, HttpServletResponse resp) {
+    }
+
+    private void getSignout(HttpServletRequest req, HttpServletResponse resp) {
+    }
+
+    private void postSignup(HttpServletRequest req, HttpServletResponse resp) {
+    }
+
+    private void getSignup(HttpServletRequest req, HttpServletResponse resp) {
+    }
+
+    private void postSignin (HttpServletRequest req, HttpServletResponse resp) {
         String pageName = "/WEB-INF/views/signin.jsp";
         RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
         try {
@@ -47,7 +76,7 @@ public class Connect extends HttpServlet {
         }
     }
 
-    private void testSignin (HttpServletRequest req, HttpServletResponse resp) {
+    private void getSignin(HttpServletRequest req, HttpServletResponse resp) {
         String pageName = "/WEB-INF/views/signin.jsp";
         RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
         try {

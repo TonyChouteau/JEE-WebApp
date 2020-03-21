@@ -46,14 +46,14 @@
 
     <servlet-mapping>
         <servlet-name>play</servlet-name>
-        <url-pattern>/play/*</url-pattern>
+        <url-pattern>/play</url-pattern>
         <url-pattern>/currentGames</url-pattern>
         <url-pattern>/getCurrentGames</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>players</servlet-name>
-        <url-pattern>/player/*</url-pattern>
+        <url-pattern>/player</url-pattern>
         <url-pattern>/listPlayers</url-pattern>
         <url-pattern>/getListPlayers</url-pattern>
     </servlet-mapping>
