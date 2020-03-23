@@ -15,7 +15,7 @@ public class Admin extends HttpServlet {
     private final static long serialVersionUID = 1L;
     private DB db = DB.getInstance();
     
-    private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) throws ServletException, IOException {
+    private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) {
         String uri = req.getRequestURI();
         System.out.println("Connexion à Admin avec le path " + req.getRequestURI());
 
@@ -74,8 +74,6 @@ public class Admin extends HttpServlet {
 
     private void getAddGame(HttpServletRequest req, HttpServletResponse resp) {
 
-
-
     }
 
     private void postUnban(HttpServletRequest req, HttpServletResponse resp) {
@@ -99,11 +97,11 @@ public class Admin extends HttpServlet {
 
     }
 
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) {
         doProcess(req, resp, "GET");
     }
 
-    public void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost (HttpServletRequest req, HttpServletResponse resp) {
         doProcess(req, resp, "POST");
     }
 }
