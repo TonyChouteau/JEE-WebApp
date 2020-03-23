@@ -71,6 +71,16 @@ public class DB implements DBInt {
         return -1;
     }
 
+    @Override
+    public int editProfile(int uid, String newUsername, String newEmail, String newPassword, Date newBirthday) {
+        return 0;
+    }
+
+    @Override
+    public boolean isAdmin(int uid) {
+        return false;
+    }
+
     public void banUser (int uid){
         DB myInstance = DB.getInstance();
         String sql = "UPDATE User SET banned = 1 where idUser = ?;";
