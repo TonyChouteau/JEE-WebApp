@@ -18,21 +18,21 @@ public class Highscores extends HttpServlet {
 
         switch (uri) {
             case "/submitScore":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getSubmitScore(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postSubmitScore(req, resp);
                 break;
             case "/pastGames":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getPastGames(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postPastGames(req, resp);
                 break;
             case "/getPastGames":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getGetPastGames(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postGetPastGames(req, resp);
                 break;
             default :

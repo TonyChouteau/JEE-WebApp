@@ -20,33 +20,33 @@ public class Admin extends HttpServlet {
 
         switch (uri) {
             case "/ban":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getBan(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postBan(req, resp);
                 break;
             case "/unban":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getUnban(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postUnban(req, resp);
                 break;
             case "/addGame":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getAddGame(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postAddGame(req, resp);
                 break;
             case "/removeGame":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getRemoveGame(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postRemoveGame(req, resp);
                break;
                case "/endGame":
-                   if (mode == "GET")
+                   if (mode.equals("GET"))
                        getEndGame(req, resp);
-                   else if (mode == "POST")
+                   else if (mode.equals("POST"))
                        postEndGame(req, resp);
                   break;
             default :

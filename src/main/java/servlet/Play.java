@@ -17,21 +17,21 @@ public class Play extends HttpServlet {
 
         switch (uri) {
             case "/play":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getPlay(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postPlay(req, resp);
                 break;
             case "/currentGames":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getCurrentGames(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postCurrentGames(req, resp);
                 break;
             case "/getCurrentGames":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getGetCurrentGames(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postGetCurrentGames(req, resp);
                 break;
             default :

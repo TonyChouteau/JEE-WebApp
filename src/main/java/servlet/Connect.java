@@ -19,27 +19,27 @@ public class Connect extends HttpServlet {
 
         switch (uri) {
             case "/signin":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getSignin(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postSignin(req, resp);
                 break;
             case "/signup":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getSignup(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postSignup(req, resp);
                 break;
             case "/signout":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getSignout(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postSignout(req, resp);
                 break;
             case "/editProfile":
-                if (mode == "GET")
+                if (mode.equals("GET"))
                     getEditProfile(req, resp);
-                else if (mode == "POST")
+                else if (mode.equals("POST"))
                     postEditProfile(req, resp);
                break;
             default :
