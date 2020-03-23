@@ -46,7 +46,7 @@ public class DB implements DBInt {
     public int truc () {
         DB myInstance = DB.getInstance();
         try ( Statement test = myInstance.connect.createStatement()){
-            return test.executeUpdate("INSERT INTO User VALUES (1, 'test', 'pdptest', '1998-12-26', 0, 0)");
+            return test.executeUpdate("INSERT INTO User VALUES (NULL, 'test', 'pdptest', '1998-12-26', 0, 0)");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -34,6 +34,5 @@ launchingcommands
 .idea/
 /embeddedTomcatSample.iml
 /embeddedTomcatSample.eml
-/pom.xml
 /.classpath
 /.settings/

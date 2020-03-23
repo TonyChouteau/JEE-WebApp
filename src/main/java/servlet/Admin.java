@@ -87,7 +87,6 @@ public class Admin extends HttpServlet {
 
         DB d = DB.getInstance();
 
-
         System.out.println(d.truc());
 
     }
