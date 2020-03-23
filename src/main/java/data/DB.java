@@ -73,7 +73,7 @@ public class DB implements DBInt {
 
     public void banUser (int uid){
         DB myInstance = DB.getInstance();
-        String sql = "UPDATE TABLE User SET banned = 1 where idUser = ?;";
+        String sql = "UPDATE User SET banned = 1 where idUser = ?;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             state.setLong(1, uid);
             int result = state.executeUpdate();
@@ -86,7 +86,7 @@ public class DB implements DBInt {
 
     public void unbanUser (int uid){
         DB myInstance = DB.getInstance();
-        String sql = "UPDATE TABLE User SET banned = 0 where idUser = ?;";
+        String sql = "UPDATE User SET banned = 0 where idUser = ?;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             state.setLong(1, uid);
             int result = state.executeUpdate();
@@ -98,7 +98,7 @@ public class DB implements DBInt {
 
     public void removeGame (int gid){
         DB myInstance = DB.getInstance();
-        String sql = "UPDATE TABLE Game SET available = 0 where idGame = ?;";
+        String sql = "UPDATE Game SET available = 0 where idGame = ?;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             state.setLong(1, gid);
             int result = state.executeUpdate();
@@ -110,7 +110,7 @@ public class DB implements DBInt {
 
     public void addGame (int gid){
         DB myInstance = DB.getInstance();
-        String sql = "UPDATE TABLE Game SET available = 1 where idGame = ?;";
+        String sql = "UPDATE Game SET available = 1 where idGame = ?;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             state.setLong(1, gid);
             int result = state.executeUpdate();
@@ -137,7 +137,7 @@ public class DB implements DBInt {
 
     public int editProfile(int uid, String newUsername, String newEmail, String newPassword, Date newBirthday) {
         DB myInstance = DB.getInstance();
-        String sql = "UPDATE TABLE User SET pseudo = ?, email = ?, password = ?, birthday = ? WHERE idUser = ?;";
+        String sql = "UPDATE User SET pseudo = ?, email = ?, password = ?, birthday = ? WHERE idUser = ?;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             state.setString(1, newUsername);
             state.setString(2, newEmail);
