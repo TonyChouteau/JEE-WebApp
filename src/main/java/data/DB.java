@@ -107,14 +107,75 @@ public class DB implements DBInt {
     }
 
     public void removeGame (int gid){
-
+        DB myInstance = DB.getInstance();
+        String sql = "UPDATE TABLE Game SET available = 0 where idGame = ?;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setLong(1, gid);
+            int result = state.executeUpdate();
+        }
+         catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void addGame (int gid){
-
+        DB myInstance = DB.getInstance();
+        String sql = "UPDATE TABLE Game SET available = 1 where idGame = ?;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setLong(1, gid);
+            int result = state.executeUpdate();
+        }
+         catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void submitScore (int gid, int uid, Date begin, Date end){
+        DB myInstance = DB.getInstance();
+        String sql = "INSERT INTO GamesFinished VALUES (null, ?, ?, ?, ?, ?);";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setLong(1, gid);
+            state.setLong(2, uid);
+            state.setDate(3, begin);
+            state.setDate(4, end);
+            int result = state.executeUpdate();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int editProfile(int uid, String newUsername, String newEmail, String newPassword, Date newBirthday) {
+        DB myInstance = DB.getInstance();
+        String sql = "UPDATE TABLE User SET pseudo = ?, email = ?, password = ?, birthday = ? WHERE idUser = ?;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setString(1, newUsername);
+            state.setString(2, newEmail);
+            state.setString(3, newPassword);
+            state.setDate(4, newBirthday);
+            state.setLong(5, uid);
+            int result = state.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+        return 0;
+    }
+
+    public boolean isAdmin(int uid) {
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM User WHERE idUser = ? ;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setLong(1, uid);
+            ResultSet resultset = state.executeQuery();
+            if (resultset.next()){
+                return ( resultset.getInt("isAdmin")==1 );
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
