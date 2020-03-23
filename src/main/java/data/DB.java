@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.io.*;
+import java.util.Date;
 
 public class DB implements DBInt {
 
@@ -51,6 +52,46 @@ public class DB implements DBInt {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    @Override
+    public int signin(String pseudo, String password) {
+        return 0;
+    }
+
+    @Override
+    public int signup(String pseudo, String email, String password, Date birthday) {
+        return 0;
+    }
+
+    @Override
+    public void banUser(int uid) {
+
+    }
+
+    @Override
+    public void unbanUser(int uid) {
+
+    }
+
+    @Override
+    public void removeGame(int gid) {
+
+    }
+
+    @Override
+    public void addGame(int gid) {
+
+    }
+
+    @Override
+    public void submitScore(int gid, int uid, Date begin, Date end) {
+
+    }
+
+    @Override
+    public void editProfile(int gid, String pseudo, String password, Date birthday) {
+
     }
 
 

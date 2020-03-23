@@ -1,19 +1,26 @@
 package servlet;
 
+import data.DB;
+
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class Connect extends HttpServlet {
 
     private final static long serialVersionUID = 1L;
+    private DB db = DB.getInstance();
 
-    private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) throws ServletException, IOException {
+    private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) {
         String uri = req.getRequestURI();
         System.out.println("Connexion à Connect avec le path " + req.getRequestURI());
 
@@ -61,19 +68,73 @@ public class Connect extends HttpServlet {
     }
 
     private void postSignup(HttpServletRequest req, HttpServletResponse resp) {
+
+        String username = req.getParameter("username");
+        Date d = new Date();
+        try {
+            d = new SimpleDateFormat("yyyy-mm-dd").parse(req.getParameter("birthday"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int uid = db.signup(username, req.getParameter("email"), req.getParameter("password"), d);
+
+        if (uid >= 0) {
+            HttpSession session = req.getSession();
+            session.setAttribute("username", username);
+            session.setAttribute("uid", uid);
+            try {
+                resp.sendRedirect("/profile");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            String pageName = "/WEB-INF/views/signin.jsp";
+            RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
+            try {
+                rd.forward(req, resp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void getSignup(HttpServletRequest req, HttpServletResponse resp) {
-    }
-
-    private void postSignin (HttpServletRequest req, HttpServletResponse resp) {
-        String pageName = "/WEB-INF/views/signin.jsp";
+        String pageName = "/WEB-INF/views/signup.jsp";
         RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
         try {
             rd.forward(req, resp);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void postSignin (HttpServletRequest req, HttpServletResponse resp) {
+
+        String username = req.getParameter("username");
+
+        int uid = db.signin(username, req.getParameter("password"));
+
+        if (uid >= 0) {
+            HttpSession session = req.getSession();
+            session.setAttribute("username", username);
+            session.setAttribute("uid", uid);
+            try {
+                resp.sendRedirect("/profile");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            String pageName = "/WEB-INF/views/signin.jsp";
+            RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
+            try {
+                rd.forward(req, resp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
     private void getSignin(HttpServletRequest req, HttpServletResponse resp) {
@@ -86,11 +147,11 @@ public class Connect extends HttpServlet {
         }
     }
 
-    public void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet (HttpServletRequest req, HttpServletResponse resp) {
         doProcess(req, resp, "GET");
     }
 
-    public void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost (HttpServletRequest req, HttpServletResponse resp) {
         System.out.println("ok boomer");
         doProcess(req, resp, "POST");
     }
