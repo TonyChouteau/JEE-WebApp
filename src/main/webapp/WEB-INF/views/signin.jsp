@@ -106,7 +106,7 @@
     </div>
     <div id="login-page">
         <div id="login-panel">
-            <form method="POST" action=".">
+            <form method="POST" action="/signin">
                 <h1 id="title-login" class="centered-text">
                     Connexion
                 </h1>

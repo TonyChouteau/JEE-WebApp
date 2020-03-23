@@ -1,13 +1,14 @@
 package data;
 
-import java.util.Date;
+
+import java.sql.Date;
 
 public interface DBInt {
 
     int truc();
 
     int signin (String pseudo, String password);
-    int signup (String pseudo, String password, Date birthday);
+    int signup (String pseudo, String email, String password, Date birthday);
 
     void banUser (int uid);
     void unbanUser (int uid);
@@ -16,7 +17,7 @@ public interface DBInt {
 
     void submitScore (int gid, int uid, Date begin, Date end);
 
-    void editProfile (int gid, String pseudo, String password, Date birthday);
+    void editProfile (String newUsername, String newEmail, String newPassword, Date newBirthday);
 
-
+    
 }

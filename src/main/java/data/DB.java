@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.io.*;
+
 
 public class DB implements DBInt {
 
@@ -101,6 +101,22 @@ public class DB implements DBInt {
          catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void removeGame (int gid){
+
+    }
+
+    public void addGame (int gid){
+
+    }
+
+    public void submitScore (int gid, int uid, Date begin, Date end){
+
+    }
+
+    public void editProfile (String newUsername, String newEmail, String newPassword, Date newBirthday){
+
     }
 
 }   
