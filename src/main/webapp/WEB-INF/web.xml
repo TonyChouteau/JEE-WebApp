@@ -46,6 +46,7 @@
 
     <servlet-mapping>
         <servlet-name>play</servlet-name>
+        <url-pattern>/home</url-pattern>
         <url-pattern>/play</url-pattern>
         <url-pattern>/currentGames</url-pattern>
         <url-pattern>/getCurrentGames</url-pattern>

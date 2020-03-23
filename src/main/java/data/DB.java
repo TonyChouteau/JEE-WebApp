@@ -1,11 +1,6 @@
 package data;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.io.*;
-import java.util.Date;
+import java.sql.*;
 
 public class DB implements DBInt {
 
@@ -55,13 +50,34 @@ public class DB implements DBInt {
     }
 
     @Override
-    public int signin(String pseudo, String password) {
+    public int signin (String pseudo, String password) {
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM User WHERE pseudo = ? AND password = ?;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setString(1, pseudo);
+            state.setString(2, password);
+            ResultSet resultset = state.executeQuery();
+            if (resultset.next()){
+                return resultset.getInt("idUser");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    @Override
+    public int signup(String pseudo, String email, String password, Date birthday) {
         return 0;
     }
 
     @Override
-    public int signup(String pseudo, String email, String password, Date birthday) {
+    public int editProfile(String newUsername, String newEmail, String newPassword, Date newBirthday) {
         return 0;
+    }
+
+    @Override
+    public boolean isAdmin(int uid) {
+        return false;
     }
 
     @Override
@@ -88,11 +104,4 @@ public class DB implements DBInt {
     public void submitScore(int gid, int uid, Date begin, Date end) {
 
     }
-
-    @Override
-    public void editProfile(int gid, String pseudo, String password, Date birthday) {
-
-    }
-
-
 }

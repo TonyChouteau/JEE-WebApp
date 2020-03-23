@@ -5,10 +5,9 @@ import data.DB;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,26 +55,43 @@ public class Connect extends HttpServlet {
     }
 
     private void postEditProfile(HttpServletRequest req, HttpServletResponse resp) {
+
+       //TODO parce que j'ai la flemme
+
     }
 
     private void getEditProfile(HttpServletRequest req, HttpServletResponse resp) {
+        String pageName = "/WEB-INF/views/profile.jsp";
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(pageName);
+        try {
+            rd.forward(req, resp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void postSignout(HttpServletRequest req, HttpServletResponse resp) {
+        req.getSession().invalidate();
+        try {
+            resp.sendRedirect("/home");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void getSignout(HttpServletRequest req, HttpServletResponse resp) {
+        req.getSession().invalidate();
+        try {
+            resp.sendRedirect("/home");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void postSignup(HttpServletRequest req, HttpServletResponse resp) {
 
         String username = req.getParameter("username");
-        Date d = new Date();
-        try {
-            d = new SimpleDateFormat("yyyy-mm-dd").parse(req.getParameter("birthday"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date d = new Date(42);
         int uid = db.signup(username, req.getParameter("email"), req.getParameter("password"), d);
 
         if (uid >= 0) {
@@ -83,7 +99,7 @@ public class Connect extends HttpServlet {
             session.setAttribute("username", username);
             session.setAttribute("uid", uid);
             try {
-                resp.sendRedirect("/profile");
+                resp.sendRedirect("/home");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -119,7 +135,7 @@ public class Connect extends HttpServlet {
             session.setAttribute("username", username);
             session.setAttribute("uid", uid);
             try {
-                resp.sendRedirect("/profile");
+                resp.sendRedirect("/home");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -133,8 +149,6 @@ public class Connect extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
-
     }
 
     private void getSignin(HttpServletRequest req, HttpServletResponse resp) {

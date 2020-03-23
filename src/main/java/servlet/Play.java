@@ -16,6 +16,11 @@ public class Play extends HttpServlet {
         System.out.println("Connexion à Play avec le path " + req.getRequestURI());
 
         switch (uri) {
+            case "/home":
+                if (mode.equals("GET"))
+                    getHome(req, resp);
+                else if (mode.equals("POST"))
+                    postHome(req, resp);
             case "/play":
                 if (mode.equals("GET"))
                     getPlay(req, resp);
@@ -58,6 +63,12 @@ public class Play extends HttpServlet {
     private void getPlay(HttpServletRequest req, HttpServletResponse resp) {
     }
 
+    private void postHome(HttpServletRequest req, HttpServletResponse resp) {
+    }
+
+    private void getHome(HttpServletRequest req, HttpServletResponse resp) {
+        System.out.println(req.getSession().getAttribute("uid"));
+    }
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doProcess(req, resp, "GET");
     }

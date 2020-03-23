@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Admin extends HttpServlet {
 
     private final static long serialVersionUID = 1L;
+    private DB db = DB.getInstance();
     
     private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) throws ServletException, IOException {
         String uri = req.getRequestURI();
@@ -72,6 +73,9 @@ public class Admin extends HttpServlet {
     }
 
     private void getAddGame(HttpServletRequest req, HttpServletResponse resp) {
+
+
+
     }
 
     private void postUnban(HttpServletRequest req, HttpServletResponse resp) {
@@ -85,9 +89,13 @@ public class Admin extends HttpServlet {
 
     private void getBan(HttpServletRequest req, HttpServletResponse resp) {
 
-        DB d = DB.getInstance();
+        if (db.isAdmin(Integer.parseInt((String) req.getSession().getAttribute("uid")))) {
 
-        System.out.println(d.truc());
+            int uid = Integer.parseInt(req.getParameter("uid"));
+            System.out.println(uid);
+
+            db.banUser(uid);
+        }
 
     }
 
