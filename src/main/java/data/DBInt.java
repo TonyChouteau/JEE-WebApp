@@ -6,8 +6,8 @@ public interface DBInt {
 
     int truc();
 
-    boolean signin (String pseudo, String password);
-    boolean signup (String pseudo, String password, Date birthday);
+    int signin (String pseudo, String password);
+    int signup (String pseudo, String password, Date birthday);
 
     void banUser (int uid);
     void unbanUser (int uid);
