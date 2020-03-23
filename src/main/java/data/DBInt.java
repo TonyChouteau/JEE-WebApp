@@ -14,6 +14,8 @@ public interface DBInt {
     void removeGame (int gid);
     void addGame (int gid);
 
+    void submitScore (int gid, int uid, Date begin, Date end);
+
     void editProfile (int gid, String pseudo, String password, Date birthday);
 
 
