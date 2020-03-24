@@ -57,6 +57,7 @@ public class Highscores extends HttpServlet {
     }
 
     private void getGetPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //TODO Il faut pouvoir récupérer la liste des parties passées
     }
 
     private void postPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -64,9 +65,11 @@ public class Highscores extends HttpServlet {
     }
 
     private void getPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //TODO Il faut avoir la page d'affichage des parties passées
     }
 
     private void postSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //TODO Il faut pouvoir submit un score
     }
 
     private void getSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {
