@@ -64,12 +64,9 @@
             padding: 0;
         }
         
-        
-        #profile-top {
-            width: 100%;
-            height: 400px;
-        }
         #menu {
+            margin:  0;
+            padding: 0;
             width: 80%;
             height: 100%;
 			font-size: 20px;
@@ -79,8 +76,12 @@
             justify-content: center;
         }
         .menu-item{
-            margin-left: 50px;
-            margin-right: 50px;
+            margin-left: 10%;
+            margin-right: 10%;
+            display: flex;
+			flex-direction : column;
+            text-align: center;
+            justify-content: center;
         }
         #title {
             width: 20%;
@@ -88,33 +89,189 @@
 			font-size: 20px;
         }
 
-        #profile-bottom {
-            width: 100%;
-            height: 400px;
-        }
-        #verticalSeparator{
+        .verticalSeparator{
             height: 100%;
             width : 1px;
             background-color: black;
         }
+        .horizontal-separator{
+            width: 100%;
+            height : 1px;
+            background-color: lightgray;
+        }
+
+        #profile-top {
+            width: 100%;
+            height: 320px;
+            display: flex;
+            flex-direction: row;
+        }
+        #picture{
+            border-radius: 5px;
+            margin : 10px;
+            height: 300px;
+            width: 300px;
+        }
+        #edit-profile{
+            border-radius: 0 5px 0 0;
+            margin-right: 10px;
+            height: 300px;
+            width: 900px;
+        }
+        #profile-picture{
+            width: 100%;
+            height: 100%;
+        }
+        .centered-text {
+            text-align: center;
+            justify-content: center;
+        }
+        .register-input {
+            margin: 0;
+            padding: 0;
+            background: rgb(228, 228, 228);
+            height: 40px;
+            width: 40vh;
+            min-width: 295px;
+            margin: 0 auto;
+            border: 0;
+            text-align: center;
+            border-radius: 5px;
+        }
+        
+        .register-button {
+            font-family: 'Josefin Slab', serif;
+            font-size: larger;
+            margin: 0;
+            padding: 0;
+            background: rgb(228, 228, 228);
+            height: 50px;
+            width: 10vh;
+            min-width: 295px;
+            margin: 0 auto;
+            border: 0;
+            text-align: center;
+            border-radius: 5px;
+            color: rgb(235, 66, 223);
+        }
+        
+        .register-button:hover {
+            background: rgb(233, 233, 233);
+        }
+        
+        .register-button:active {
+            background: rgb(235, 66, 223);
+            color: white;
+        }
+
+        #form-profile{
+            display: flex;
+            flex-direction: row;
+        }
+        .column{
+            width: 50%;
+            height: 100%;
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #profile-bottom {
+            width: calc(100% - 20px);
+            margin: 0 10px 0 10px;
+            display: flex;
+			flex-direction : row;
+            text-align: center;
+            justify-content: center;
+        }
+        .game-list-title{
+            margin: 10px 0 20px 0;
+        }
+        .gamelist-item {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 10px;
+            background-color: gray;
+            display: flex;
+			flex-direction : column;
+            text-align: center;
+            justify-content: center;
+        }
     </style>
+    <script type="text/javascript">
+        function verifySecondPassword() {
+            if (document.getElementById("fpassword1").value != document.getElementById("fpassword2").value) {
+                document.getElementById("fpassword2").style["border"] = "1px solid red";
+            } else {
+                document.getElementById("fpassword2").style["border"] = "0px #00000000";
+            }
+        }
+
+        function loadData() {
+            loadProfileInfo();
+            loadPastGames();
+            loadCurrentGame();
+        }
+        function loadProfileInfo() {
+            //fetch to get players personal information
+        }
+        function loadPastGames(){
+            //fetch to get past games
+            data = [
+                "Game1",
+                "Game2",
+                "Game3",
+            ]
+            for (let i in data){
+                document.getElementById("past-games").innerHTML+=`
+                    <div class="gamelist-item">
+                        <div class="game">
+                            `+data[i]+`
+                        </div>
+                    </div>
+                `
+            }
+        }
+        function loadCurrentGame(){
+            //fetch to get past games
+            data = [
+                "Game4",
+                "Game5",
+            ]
+            for (let i in data){
+                document.getElementById("current-games").innerHTML+=`
+                    <div class="gamelist-item">
+                        <div class="game">
+                            `+data[i]+`
+                        </div>
+                    </div>
+                `
+            }
+        }
+    </script>
 </head>
 
-<body>
+<body onload="loadData()">
     <div id="page">
         <div id="menu-panel">
             <h1 id="menu">
                 <div class="menu-item">
-                    Profile
+                    <div>
+                        Games
+                    </div>
                 </div>
                 <div class="menu-item">
-                    Games
+                    <div>
+                        Players
+                    </div>
                 </div>
                 <div class="menu-item">
-                    Test 3
+                    <div>
+                        Games
+                    </div>
                 </div>
             </h1>
-            <div id="verticalSeparator"></div>
+            <div class="verticalSeparator"></div>
             <h1 id="title">
                 <div>
                     <%=username%>
@@ -123,10 +280,55 @@
         </div>
         <div id="content-panel">
             <div id="profile-top">
-
+                <div id="picture">
+                    <img id="profile-picture" src="profile.bmp"/>
+                </div>
+                <div id="edit-profile">
+                    <form id="form-profile" method="POST" action="/signup">
+                        <div class="column">
+                            <h3 class="centered-text">
+                                E-mail :
+                            </h3>
+                            <input class="register-input" type="email" id="femail" name="email" placeholder="">
+            
+                            <h3 class="centered-text">
+                                Username :
+                            </h3>
+                            <input class="register-input" type="text" id="fusername" name="username" placeholder="">
+            
+                            <h3 class="centered-text">
+                                Birthday :
+                            </h3>
+                            <input class="register-input" type="date" id="fbirthday" name="birthday" placeholder="">
+                        </div>
+                        <div class="column">
+                            <h3 class="centered-text">
+                                Password :
+                            </h3>
+                            <input class="register-input" type="password" id="fpassword1" name="password" placeholder="">
+            
+                            <h3 class="centered-text">
+                                Confirm password :
+                            </h3>
+                            <input class="register-input" type="password" id="fpassword2" onchange="verifySecondPassword()" name="password" placeholder="">
+                            <h1></h1>
+                            <input class="register-button" type="submit" value="Save" />
+                        </div>
+                    </form>
+                </div>
             </div>
+            <div class="horizontal-separator"></div>
             <div id="profile-bottom">
-
+                <div id="past-games" class="column">
+                    <h3 class="game-list-title">
+                        Past Games
+                    </h3>
+                </div>
+                <div id="current-games" class="column">
+                    <h3 class="game-list-title">
+                        Current Games
+                    </h3>
+                </div>
             </div>
         </div>
     </div>

@@ -50,11 +50,6 @@
             justify-content: center;
         }
         
-        #centered-text {
-            margin: 0;
-            padding: 0;
-        }
-        
         #title-login {
             margin: 0;
             padding: 10px;
