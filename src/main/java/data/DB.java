@@ -194,4 +194,51 @@ public class DB implements DBInt {
         }
         return list;
     }
+
+    public ArrayList<Partie> listPartie(){
+        ArrayList<Partie> list = new ArrayList<>();
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            ResultSet resultset = state.executeQuery();
+            while (resultset.next()){
+                int pid = resultset.getInt("idPartie");
+                int uid = resultset.getInt("user");
+                int gid = resultset.getInt("game");
+                String pseudo = resultset.getString("pseudo");
+                Date debut = resultset.getDate("gameBeginD");
+                Date fin = resultset.getDate("gameEndD");
+                Partie game = new Partie(pid, uid, gid, pseudo, debut, fin);
+                list.add(game);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public ArrayList<Partie> listPartieJeu(int gid){
+        ArrayList<Partie> list = new ArrayList<>();
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser WHERE game = ?;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setInt(1, gid);
+            ResultSet resultset = state.executeQuery();
+            while (resultset.next()){
+                int pid = resultset.getInt("idPartie");
+                int uid = resultset.getInt("user");
+                int gameid = resultset.getInt("game");
+                String pseudo = resultset.getString("pseudo");
+                Date debut = resultset.getDate("gameBeginD");
+                Date fin = resultset.getDate("gameEndD");
+                Partie game = new Partie(pid, uid, gameid, pseudo, debut, fin);
+                list.add(game);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
