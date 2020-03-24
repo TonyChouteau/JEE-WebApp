@@ -200,15 +200,14 @@ public class DB implements DBInt {
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             ResultSet resultset = state.executeQuery();
             while (resultset.next()){
-                int pid = resultset.getInt(columnIndex)
-                int uid = resultset.getInt("idUser");
+                int pid = resultset.getInt("idPartie");
+                int uid = resultset.getInt("user");
+                int gid = resultset.getInt("game");
                 String pseudo = resultset.getString("pseudo");
-                String email = resultset.getString("email");
-                Date birthday = resultset.getDate("birthday");
-                int banned = resultset.getInt("banned");
-                int isAdmin = resultset.getInt("isAdmin");
-                User usr = new User(uid, pseudo, email, birthday, banned, isAdmin);
-                list.add(usr);
+                Date debut = resultset.getDate("gameBeginD");
+                Date fin = resultset.getDate("gameEndD");
+                Partie game = new Partie(pid, uid, gid, pseudo, debut, fin);
+                list.add(game);
             }
         }
         catch (Exception e) {
