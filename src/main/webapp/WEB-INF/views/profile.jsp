@@ -180,22 +180,23 @@
             width: calc(100% - 20px);
             margin: 0 10px 0 10px;
             display: flex;
-			flex-direction : row;
+			flex-direction : column;
             text-align: center;
             justify-content: center;
         }
-        .game-list-title{
+        #game-list-title{
             margin: 10px 0 20px 0;
         }
-        #past-games {
+        #games-title {
             width: 80%;
         }
         .gamelist-item {
+            border: solid 1px black;
             border-radius: 5px;
             width: 100%;
             height: 70px;
             margin-bottom: 10px;
-            background-color: gray;
+            background-color: rgb(228, 228, 228);
             display: flex;
 			flex-direction : column;
             text-align: center;
@@ -213,10 +214,15 @@
 
         function loadData() {
             loadProfileInfo();
+            loadCurrentGame();
             loadPastGames();
         }
         function loadProfileInfo() {
             //fetch to get players personal information
+        }
+        function loadCurrentGame() {
+            data = "Game 1";
+            document.getElementById("current-game").innerHTML = data;
         }
         function loadPastGames(){
             //fetch to get past games
@@ -232,7 +238,7 @@
                             `+data[i]+`
                         </div>
                     </div>
-                `
+                `;
             }
         }
     </script>
@@ -306,7 +312,17 @@
             </div>
             <div class="horizontal-separator"></div>
             <div id="profile-bottom">
-                <div id="past-games">
+                <div class="games-title">
+                    <h3 class="game-list-title">
+                        Curent Game
+                    </h3>
+                    <div class="gamelist-item">
+                        <div id="current-game">
+                            None
+                        </div>
+                    </div>
+                </div>
+                <div id="past-games" class="games-title">
                     <h3 class="game-list-title">
                         Past Games
                     </h3>
