@@ -192,4 +192,30 @@ public class DB implements DBInt {
         }
         return list;
     }
+
+    public ArrayList<Partie> listPartie(){
+        ArrayList<Partie> list = new ArrayList<>();
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            ResultSet resultset = state.executeQuery();
+            while (resultset.next()){
+                int pid = resultset.getInt(columnIndex)
+                int uid = resultset.getInt("idUser");
+                String pseudo = resultset.getString("pseudo");
+                String email = resultset.getString("email");
+                Date birthday = resultset.getDate("birthday");
+                int banned = resultset.getInt("banned");
+                int isAdmin = resultset.getInt("isAdmin");
+                User usr = new User(uid, pseudo, email, birthday, banned, isAdmin);
+                list.add(usr);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
 }
