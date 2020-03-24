@@ -1,6 +1,7 @@
 package data;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DB implements DBInt {
 
@@ -69,16 +70,6 @@ public class DB implements DBInt {
             e.printStackTrace();
         }
         return -1;
-    }
-
-    @Override
-    public int editProfile(int uid, String newUsername, String newEmail, String newPassword, Date newBirthday) {
-        return 0;
-    }
-
-    @Override
-    public boolean isAdmin(int uid) {
-        return false;
     }
 
     public void banUser (int uid){
@@ -177,5 +168,28 @@ public class DB implements DBInt {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public ArrayList<User> listUser(){
+        ArrayList<User> list = new ArrayList<>();
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM User;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            ResultSet resultset = state.executeQuery();
+            while (resultset.next()){
+                int uid = resultset.getInt("idUser");
+                String pseudo = resultset.getString("pseudo");
+                String email = resultset.getString("email");
+                Date birthday = resultset.getDate("birthday");
+                int banned = resultset.getInt("banned");
+                int isAdmin = resultset.getInt("isAdmin");
+                User usr = new User(uid, pseudo, email, birthday, banned, isAdmin);
+                list.add(usr);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }
