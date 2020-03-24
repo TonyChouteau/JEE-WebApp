@@ -114,7 +114,6 @@
         }
         #edit-profile{
             border-radius: 0 5px 0 0;
-            margin-top: 10px;
             margin-right: 10px;
             height: 300px;
             width: 900px;
@@ -172,22 +171,31 @@
         .column{
             width: 50%;
             height: 100%;
+            margin: 10px;
             display: flex;
             flex-direction: column;
         }
         
         #profile-bottom {
-            width: 100%;
-            height: 400px;
+            width: calc(100% - 20px);
+            margin: 0 10px 0 10px;
             display: flex;
 			flex-direction : row;
             text-align: center;
             justify-content: center;
         }
+        .game-list-title{
+            margin: 10px 0 20px 0;
+        }
         .gamelist-item {
             width: 100%;
-            height: 30px;
+            height: 50px;
+            margin-bottom: 10px;
             background-color: gray;
+            display: flex;
+			flex-direction : column;
+            text-align: center;
+            justify-content: center;
         }
     </style>
     <script type="text/javascript">
@@ -198,10 +206,52 @@
                 document.getElementById("fpassword2").style["border"] = "0px #00000000";
             }
         }
+
+        function loadData() {
+            loadProfileInfo();
+            loadPastGames();
+            loadCurrentGame();
+        }
+        function loadProfileInfo() {
+            //fetch to get players personal information
+        }
+        function loadPastGames(){
+            //fetch to get past games
+            data = [
+                "Game1",
+                "Game2",
+                "Game3",
+            ]
+            for (let i in data){
+                document.getElementById("past-games").innerHTML+=`
+                    <div class="gamelist-item">
+                        <div class="game">
+                            `+data[i]+`
+                        </div>
+                    </div>
+                `
+            }
+        }
+        function loadCurrentGame(){
+            //fetch to get past games
+            data = [
+                "Game4",
+                "Game5",
+            ]
+            for (let i in data){
+                document.getElementById("current-games").innerHTML+=`
+                    <div class="gamelist-item">
+                        <div class="game">
+                            `+data[i]+`
+                        </div>
+                    </div>
+                `
+            }
+        }
     </script>
 </head>
 
-<body>
+<body onload="loadData()">
     <div id="page">
         <div id="menu-panel">
             <h1 id="menu">
@@ -269,15 +319,15 @@
             </div>
             <div class="horizontal-separator"></div>
             <div id="profile-bottom">
-                <div class="column">
-                    <div class="gamelist-item"></div>
+                <div id="past-games" class="column">
+                    <h3 class="game-list-title">
+                        Past Games
+                    </h3>
                 </div>
-                <div class="column">
-                    <div class="gamelist-item"></div>
-                    <div class="gamelist-item"></div>
-                    <div class="gamelist-item"></div>
-                    <div class="gamelist-item"></div>
-                    <div class="gamelist-item"></div>
+                <div id="current-games" class="column">
+                    <h3 class="game-list-title">
+                        Current Games
+                    </h3>
                 </div>
             </div>
         </div>
