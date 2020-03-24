@@ -200,7 +200,7 @@ public class DB implements DBInt {
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             ResultSet resultset = state.executeQuery();
             while (resultset.next()){
-                int pid = resultset.getInt(columnIndex)
+                int pid = resultset.getInt(columnIndex);
                 int uid = resultset.getInt("idUser");
                 String pseudo = resultset.getString("pseudo");
                 String email = resultset.getString("email");
