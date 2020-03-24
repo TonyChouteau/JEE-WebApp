@@ -1,9 +1,11 @@
 package servlet;
 
 import data.DB;
+import data.DBInt;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Admin extends HttpServlet {
 
     private final static long serialVersionUID = 1L;
-    private DB db = DB.getInstance();
+    private DBInt db = DB.getInstance();
     
     private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) {
         String uri = req.getRequestURI();
@@ -77,9 +79,29 @@ public class Admin extends HttpServlet {
     }
 
     private void postUnban(HttpServletRequest req, HttpServletResponse resp) {
+        try {
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void getUnban(HttpServletRequest req, HttpServletResponse resp) {
+
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+
+        if (uid == null) {
+            try {
+                resp.sendRedirect("/signin");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+         else if (db.isAdmin(uid)) {
+            System.out.println(uid);
+            db.unbanUser(uid);
+        }
+
     }
 
     private void postBan(HttpServletRequest req, HttpServletResponse resp) {
@@ -87,7 +109,7 @@ public class Admin extends HttpServlet {
 
     private void getBan(HttpServletRequest req, HttpServletResponse resp) {
 
-        if (db.isAdmin(Integer.parseInt((String) req.getSession().getAttribute("uid")))) {
+        if (db.isAdmin((Integer) req.getSession().getAttribute("uid"))) {
 
             int uid = Integer.parseInt(req.getParameter("uid"));
             System.out.println(uid);
