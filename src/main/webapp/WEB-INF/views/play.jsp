@@ -88,6 +88,15 @@
             height: 100%;
 			font-size: 20px;
         }
+        #game-title{
+            text-align: center;
+        }
+        #game {
+            width: calc(100%-20px);
+            height:  
+            margin : 0 10px 0 10px;
+
+        }
     </style>
     <script type="text/javascript">
 
@@ -122,9 +131,9 @@
             </h1>
         </div>
         <div id="content-panel">
-            <div id="game-title">
-                
-            </div>
+            <h3 id="game-title">
+                <%=gameName>
+            </h3>
             <div id="game">
                 
             </div>
