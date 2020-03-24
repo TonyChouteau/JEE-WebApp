@@ -24,22 +24,12 @@ public class Admin extends HttpServlet {
         Integer uid = (Integer) req.getSession().getAttribute("uid");
 
         try {
-
-
             if (uid == null) {
-                try {
-                    resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                 return;
             }
             else if (!db.isAdmin(uid)) {
-                try {
-                    resp.sendError(HttpServletResponse.SC_FORBIDDEN);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN);
                 return;
             }
 
@@ -95,6 +85,7 @@ public class Admin extends HttpServlet {
 
     private void postEndGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
         //TODO Il faut avoir CurrentGames
+
     }
 
     private void getEndGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {

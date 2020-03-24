@@ -12,33 +12,43 @@ public class Highscores extends HttpServlet {
 
     private final static long serialVersionUID = 1L;
 
-    private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) throws ServletException, IOException {
+    private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) {
         String uri = req.getRequestURI();
         System.out.println("Connexion à Highscores avec le path " + req.getRequestURI());
 
-        switch (uri) {
-            case "/submitScore":
-                if (mode.equals("GET"))
-                    getSubmitScore(req, resp);
-                else if (mode.equals("POST"))
-                    postSubmitScore(req, resp);
-                break;
-            case "/pastGames":
-                if (mode.equals("GET"))
-                    getPastGames(req, resp);
-                else if (mode.equals("POST"))
-                    postPastGames(req, resp);
-                break;
-            case "/getPastGames":
-                if (mode.equals("GET"))
-                    getGetPastGames(req, resp);
-                else if (mode.equals("POST"))
-                    postGetPastGames(req, resp);
-                break;
-            default :
-                System.out.println("URI non reconnue : " + uri);
-                break;
-        }
+        try {
+            switch (uri) {
+                case "/submitScore":
+                    if (mode.equals("GET")) {
+                        getSubmitScore(req, resp);
+                    }
+                    else if (mode.equals("POST")) {
+                        postSubmitScore(req, resp);
+                    }
+                    break;
+                case "/pastGames":
+                    if (mode.equals("GET")) {
+                        getPastGames(req, resp);
+                    }
+                    else if (mode.equals("POST")) {
+                        postPastGames(req, resp);
+                    }
+                    break;
+                case "/getPastGames":
+                    if (mode.equals("GET")) {
+                        getGetPastGames(req, resp);
+                    }
+                    else if (mode.equals("POST")) {
+                        postGetPastGames(req, resp);
+                    }
+                    break;
+                default :
+                    System.out.println("URI non reconnue : " + uri);
+                    break;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        };
 
     }
 
