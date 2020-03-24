@@ -89,7 +89,7 @@ public class Admin extends HttpServlet {
     }
 
     private void getEndGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
-        resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     private void postRemoveGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
@@ -105,7 +105,7 @@ public class Admin extends HttpServlet {
     }
 
     private void getRemoveGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
-        resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     private void postAddGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
@@ -121,7 +121,7 @@ public class Admin extends HttpServlet {
     }
 
     private void getAddGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
-        resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     private void postUnban(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
@@ -137,7 +137,7 @@ public class Admin extends HttpServlet {
     }
 
     private void getUnban(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
-        resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     private void postBan(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {

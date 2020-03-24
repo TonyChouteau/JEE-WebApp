@@ -52,22 +52,25 @@ public class Highscores extends HttpServlet {
 
     }
 
-    private void postGetPastGames(HttpServletRequest req, HttpServletResponse resp) {
+    private void postGetPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
-    private void getGetPastGames(HttpServletRequest req, HttpServletResponse resp) {
+    private void getGetPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     }
 
-    private void postPastGames(HttpServletRequest req, HttpServletResponse resp) {
+    private void postPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
-    private void getPastGames(HttpServletRequest req, HttpServletResponse resp) {
+    private void getPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     }
 
-    private void postSubmitScore(HttpServletRequest req, HttpServletResponse resp) {
+    private void postSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     }
 
-    private void getSubmitScore(HttpServletRequest req, HttpServletResponse resp) {
+    private void getSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
