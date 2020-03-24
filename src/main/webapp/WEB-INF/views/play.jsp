@@ -92,18 +92,73 @@
             text-align: center;
         }
         #game {
+            border-radius: 5px;
             width: calc(100%-20px);
-            height:  
+            height:  500px;
             margin : 0 10px 0 10px;
-
+            background-color: black;
+            display: flex;
+			flex-direction : column;
+            text-align: center;
+            justify-content: center;
+        }
+        #score{
+            color: white;
+        }
+        #buttons{
+            margin: 20px 0 20px 0;
+            display: flex;
+			flex-direction : row;
+            text-align: center;
+            justify-content: center;
+        }
+        .button {
+            font-family: 'Josefin Slab', serif;
+            font-size: larger;
+            margin: 0;
+            padding: 0;
+            background: rgb(228, 228, 228);
+            height: 50px;
+            width: 10vh;
+            min-width: 295px;
+            margin: 0 auto;
+            border: 0;
+            text-align: center;
+            border-radius: 5px;
+            color: rgb(235, 66, 223);
+        }
+        .button:hover {
+            background: rgb(233, 233, 233);
+        }
+        
+        .button:active {
+            background: rgb(235, 66, 223);
+            color: white;
         }
     </style>
     <script type="text/javascript">
-
+        function loadGame(){
+            //Nothing for now
+        }
+        let playing = false;
+        let score = 0;
+        function playingButton() {
+            playing = !playing;
+        }
+        setInterval(() => {
+            play()
+        }, 1000)
+        function play(){
+            if (playing){
+                score ++;
+                document.getElementById("score").innerHTML = score;
+                console.log(score);
+            }
+        }
     </script>
 </head>
 
-<body onload="loadData()">
+<body onload="loadGame()">
     <div id="page">
         <div id="menu-panel">
             <h1 id="menu">
@@ -134,8 +189,15 @@
             <h3 id="game-title">
                 <%=gameName>
             </h3>
-            <div id="game">
-                
+            <div id="game" onclick="play()">
+                <h2 id="score">
+                    0
+                </h2>
+            </div>
+            <div id="buttons">
+                    <button class="button" onclick="playingButton()">
+                        Play
+                    </button>
             </div>
         </div>
     </div>
