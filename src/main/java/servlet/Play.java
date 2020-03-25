@@ -25,6 +25,7 @@ public class Play extends HttpServlet {
                     else if (mode.equals("POST")) {
                         postHome(req, resp);
                     }
+                    break;
                 case "/play":
                     if (mode.equals("GET")) {
                         getPlay(req, resp);
@@ -109,10 +110,9 @@ public class Play extends HttpServlet {
 
     private void displayPage (HttpServletRequest req, HttpServletResponse resp, String page) throws IOException{
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(page);
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views" + page);
         try {
             rd.forward(req, resp);
-            resp.sendError(HttpServletResponse.SC_OK);
         } catch (ServletException e) {
             e.printStackTrace();
         }

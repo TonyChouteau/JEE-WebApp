@@ -13,6 +13,7 @@ public class GameLine{
         this.idUser = idUser;
         this.game = game;
         this.gameBeginD = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        this.gameEndD = new java.sql.Date(Calendar.getInstance().getTime().getTime());
     }
+
+
 }

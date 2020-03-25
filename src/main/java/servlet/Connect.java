@@ -92,12 +92,12 @@ public class Connect extends HttpServlet {
             session.setAttribute("uid", uid);
             resp.sendRedirect("/home");
         } else {
-            displayPage(req, resp, "/WEB-INF/views/signin.jsp");
+            displayPage(req, resp, "/signin.jsp");
         }
     }
 
     private void getSignup(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        displayPage(req, resp, "/WEB-INF/views/signup.jsp");
+        displayPage(req, resp, "/signup.jsp");
     }
 
     private void postSignin (HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -113,12 +113,12 @@ public class Connect extends HttpServlet {
             resp.sendRedirect("/home");
 
         } else {
-            displayPage(req, resp, "/WEB-INF/views/signin.jsp");
+            displayPage(req, resp, "/signin.jsp");
         }
     }
 
     private void getSignin(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        displayPage(req, resp, "/WEB-INF/views/signin.jsp");
+        displayPage(req, resp, "/signin.jsp");
     }
 
     public void doGet (HttpServletRequest req, HttpServletResponse resp) {
@@ -132,7 +132,7 @@ public class Connect extends HttpServlet {
 
     private void displayPage (HttpServletRequest req, HttpServletResponse resp, String page) throws IOException{
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(page);
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views" + page);
         try {
             rd.forward(req, resp);
         } catch (ServletException e) {

@@ -1,6 +1,12 @@
 package servlet;
 
+import data.DB;
+import data.DBInt;
+import data.User;
+
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Players extends HttpServlet {
     
     private final static long serialVersionUID = 1L;
+    private DBInt db = DB.getInstance();
     
     private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) throws ServletException, IOException {
         String uri = req.getRequestURI();
@@ -18,7 +25,7 @@ public class Players extends HttpServlet {
 
         try {
             switch (uri) {
-                case "/play":
+                case "/player":
                     if (mode.equals("GET")) {
                         getPlayer(req, resp);
                     }
@@ -26,7 +33,7 @@ public class Players extends HttpServlet {
                         postPlayer(req, resp);
                     }
                     break;
-                case "/currentGames":
+                case "/listPlayers":
                     if (mode.equals("GET")) {
                         getListPlayers(req, resp);
                     }
@@ -34,7 +41,7 @@ public class Players extends HttpServlet {
                         postListPlayers(req, resp);
                     }
                     break;
-                case "/getCurrentGames":
+                case "/getListPlayers":
                     if (mode.equals("GET")) {
                         getGetListPlayers(req, resp);
                     }
@@ -57,7 +64,20 @@ public class Players extends HttpServlet {
     }
 
     private void getGetListPlayers(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        // TODO récupérer la liste des joueurs
+
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+        if (uid == null) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        } else if (!db.isAdmin(uid)) {
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+
+        ArrayList<User> users = db.listUser();
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(users.toString());
     }
 
     private void postListPlayers(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -73,7 +93,7 @@ public class Players extends HttpServlet {
     }
 
     private void getPlayer(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        displayPage(req, resp, "player.jsp");
+        displayPage(req, resp, "/profile.jsp");
     }
 
 
@@ -88,10 +108,9 @@ public class Players extends HttpServlet {
 
     private void displayPage (HttpServletRequest req, HttpServletResponse resp, String page) throws IOException{
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(page);
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views" + page);
         try {
             rd.forward(req, resp);
-            resp.sendError(HttpServletResponse.SC_OK);
         } catch (ServletException e) {
             e.printStackTrace();
         }
