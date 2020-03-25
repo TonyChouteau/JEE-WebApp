@@ -1,8 +1,13 @@
 package servlet;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSerializer;
 import data.DB;
 import data.DBInt;
 import data.User;
+import jdk.nashorn.internal.parser.JSONParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -77,7 +82,7 @@ public class Players extends HttpServlet {
         ArrayList<User> users = db.listUser();
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-        resp.getWriter().write(users.toString());
+        resp.getWriter().write(new Gson().toJson(users));
     }
 
     private void postListPlayers(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -89,11 +94,18 @@ public class Players extends HttpServlet {
     }
 
     private void postPlayer(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+    // TODO editProfile
+
         resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     private void getPlayer(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        displayPage(req, resp, "/profile.jsp");
+        if (req.getSession().getAttribute("uid") != null) {
+            displayPage(req, resp, "/profile.jsp");
+        } else {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+        }
     }
 
 

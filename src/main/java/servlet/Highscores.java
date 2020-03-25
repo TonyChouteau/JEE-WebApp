@@ -1,5 +1,8 @@
 package servlet;
 
+import data.DB;
+import data.DBInt;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Highscores extends HttpServlet {
 
     private final static long serialVersionUID = 1L;
+    private DBInt db = DB.getInstance();
 
     private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) {
         String uri = req.getRequestURI();
@@ -69,7 +73,7 @@ public class Highscores extends HttpServlet {
     }
 
     private void postSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        //TODO Il faut pouvoir submit un score
+        //db.submitScore(req.);
     }
 
     private void getSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {

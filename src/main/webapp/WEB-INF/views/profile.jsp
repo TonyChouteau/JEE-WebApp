@@ -203,48 +203,13 @@
             justify-content: center;
         }
     </style>
-    <script type="text/javascript">
-        function verifySecondPassword() {
-            if (document.getElementById("fpassword1").value != document.getElementById("fpassword2").value) {
-                document.getElementById("fpassword2").style["border"] = "1px solid red";
-            } else {
-                document.getElementById("fpassword2").style["border"] = "0px #00000000";
-            }
-        }
-
-        function loadData() {
-            loadProfileInfo();
-            loadCurrentGame();
-            loadPastGames();
-        }
-        function loadProfileInfo() {
-            //fetch to get players personal information
-        }
-        function loadCurrentGame() {
-            data = "Game 1";
-            document.getElementById("current-game").innerHTML = data;
-        }
-        function loadPastGames(){
-            //fetch to get past games
-            data = [
-                "Game1",
-                "Game2",
-                "Game3",
-            ]
-            for (let i in data){
-                document.getElementById("past-games").innerHTML+=`
-                    <div class="gamelist-item">
-                        <div class="game">
-                            `+data[i]+`
-                        </div>
-                    </div>
-                `;
-            }
-        }
-    </script>
+    <script type="text/javascript" src="/ressources/js/profile.js"></script>
 </head>
 
 <body onload="loadData()">
+    <%
+        String username = session.getAttribute("username").toString();
+    %>
     <div id="page">
         <div id="menu-panel">
             <h1 id="menu">
@@ -274,7 +239,7 @@
         <div id="content-panel">
             <div id="profile-top">
                 <div id="picture">
-                    <img id="profile-picture" src="ressource/img/profile.bmp"/>
+                    <img id="profile-picture" src="/ressources/img/profile.bmp"/>
                 </div>
                 <div id="edit-profile">
                     <form id="form-profile" method="POST" action="/signup">
@@ -314,7 +279,7 @@
             <div id="profile-bottom">
                 <div class="games-title">
                     <h3 class="game-list-title">
-                        Curent Game
+                        Current Game
                     </h3>
                     <div class="gamelist-item">
                         <div id="current-game">
