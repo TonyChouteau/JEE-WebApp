@@ -265,4 +265,26 @@ public class DB implements DBInt {
         }
         return list;
     }
+
+    public User getUser(int uid){
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM User WHERE idUser = ?;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setInt(1, uid);
+            ResultSet resultset = state.executeQuery();
+            if (resultset.next()){
+                String pseudo = resultset.getString("pseudo");
+                String email = resultset.getString("email");
+                Date birthday = resultset.getDate("birthday");
+                int banned = resultset.getInt("banned");
+                int isAdmin = resultset.getInt("isAdmin");
+                User usr = new User(uid, pseudo, email, birthday, banned, isAdmin);
+                return usr;
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
