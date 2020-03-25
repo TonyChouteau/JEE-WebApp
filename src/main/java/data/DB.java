@@ -239,4 +239,28 @@ public class DB implements DBInt {
         }
         return list;
     }
+
+    public ArrayList<Partie> listPartieJoueur(int uid){
+        ArrayList<Partie> list = new ArrayList<>();
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser WHERE user = ? ORDER BY gameEndD LIMIT 3;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setInt(1, uid);
+            ResultSet resultset = state.executeQuery();
+            while (resultset.next()){
+                int pid = resultset.getInt("idPartie");
+                int userid = resultset.getInt("user");
+                int gameid = resultset.getInt("game");
+                String pseudo = resultset.getString("pseudo");
+                Date debut = resultset.getDate("gameBeginD");
+                Date fin = resultset.getDate("gameEndD");
+                Partie game = new Partie(pid, userid, gameid, pseudo, debut, fin);
+                list.add(game);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
