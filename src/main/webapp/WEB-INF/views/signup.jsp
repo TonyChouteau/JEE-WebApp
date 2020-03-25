@@ -142,7 +142,7 @@
                 <input class="register-button" type="submit" value="Register" />
             </form>
             <h4>
-                <span>Already registered ?</span> <a href="./signin.html" style="color:rgb(235, 66, 223);">Sign in</a>
+                <span>Already registered ?</span> <a href="./signin" style="color:rgb(235, 66, 223);">Sign in</a>
             </h4>
         </div>
     </div>
