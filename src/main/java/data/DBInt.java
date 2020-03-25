@@ -1,6 +1,7 @@
 package data;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public interface DBInt {
 
@@ -19,5 +20,6 @@ public interface DBInt {
 
     void submitScore (int gid, int uid, Date begin, Date end);
 
+    ArrayList<User> listUser ();
 
 }

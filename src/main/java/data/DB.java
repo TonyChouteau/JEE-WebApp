@@ -72,6 +72,8 @@ public class DB implements DBInt {
         return -1;
     }
 
+
+
     public void banUser (int uid){
         DB myInstance = DB.getInstance();
         String sql = "UPDATE User SET banned = 1 where idUser = ?;";
