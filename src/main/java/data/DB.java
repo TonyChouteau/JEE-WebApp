@@ -1,5 +1,7 @@
 package data;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -44,8 +46,11 @@ public class DB implements DBInt {
         DB myInstance = DB.getInstance();
         String sql = "SELECT * FROM User WHERE pseudo = ? AND password = ?;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            String s = new String(encodedhash, StandardCharsets.UTF_8);
             state.setString(1, pseudo);
-            state.setString(2, password);
+            state.setString(2, s);
             ResultSet resultset = state.executeQuery();
             if (resultset.next()){
                 return resultset.getInt("idUser");
@@ -60,9 +65,12 @@ public class DB implements DBInt {
         DB myInstance = DB.getInstance();
         String sql = "INSERT INTO User VALUES (null, ?, ?, ?, ?, 0, 0);";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            String s = new String(encodedhash, StandardCharsets.UTF_8);
             state.setString(1, pseudo);
             state.setString(2, email);
-            state.setString(3, password);
+            state.setString(3, s);
             state.setDate(4, birthday);
             int result = state.executeUpdate();
 
