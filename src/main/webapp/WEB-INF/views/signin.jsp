@@ -118,7 +118,7 @@
                 <input class="login-button" type="submit" value="Login" />
             </form>
             <h4>
-                <span>Not registered ?</span> <a href="./signup.html" style="color:rgb(235, 66, 223);">Sign up</a>
+                <span>Not registered ?</span> <a href="./signup" style="color:rgb(235, 66, 223);">Sign up</a>
             </h4>
         </div>
     </div>
