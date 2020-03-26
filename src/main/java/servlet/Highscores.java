@@ -84,7 +84,18 @@ public class Highscores extends HttpServlet {
     }
 
     private void getPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        displayPage(req, resp, "past-games.jsp");
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+
+        if (uid == null) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+        else if (!db.isAdmin(uid)) {
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+
+        displayPage(req, resp, "/admin/past.jsp");
     }
 
     private void postSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {

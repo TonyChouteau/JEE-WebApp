@@ -24,6 +24,7 @@
         <servlet-name>admin</servlet-name>
         <url-pattern>/ban</url-pattern>
         <url-pattern>/unban</url-pattern>
+        <url-pattern>/games</url-pattern>
         <url-pattern>/addGame</url-pattern>
         <url-pattern>/removeGame</url-pattern>
         <url-pattern>/endGame</url-pattern>
