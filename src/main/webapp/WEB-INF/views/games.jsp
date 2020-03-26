@@ -11,7 +11,7 @@
 	<img id="logo" src="/ressources/img/logo.png">
 	<script>
 		let logged = <%= session.getAttribute("uid") != null %>
-		let admin = <%= session.getAttribute("isAdmin") == 1 %>
+		let admin = <%= session.getAttribute("isAdmin")%>
 	</script>
 	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 	<script type="text/javascript" src="/ressources/js/games.js"></script>

@@ -19,7 +19,7 @@
     <script type="text/javascript" src="/ressources/js/games/<%=j.getGid()%>.js"></script>
 	<script>
 		let logged = <%= session.getAttribute("uid") != null %>
-		let admin = <%= session.getAttribute("isAdmin") == 1 %>
+		let admin = <%= session.getAttribute("isAdmin")%>
 	</script>
 	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>
@@ -44,7 +44,7 @@
             <h3 id="game-title">
                 <%=j.getName()%>
             </h3>
-            <div id="game" onclick="play()">
+            <div id="game-screen" onclick="play()">
                 <h2 id="score">
                     0
                 </h2>

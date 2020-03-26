@@ -21,7 +21,7 @@
 function getItems(menu){
 	return menu.map((elt) => {
 		return `
-			<a href="`+elt.href+`"  class="menu-item">
+			<a href="`+elt.href+`" class="menu-item `+(elt.admin?"menu-admin":"")+`">
 				<div class="item-container">
 					<div>
 						<img src="`+elt.img+`" class="logo">
@@ -40,7 +40,8 @@ function makeMenu() {
 	let menu = [{
 			"name" : "Games",
 			"href" : "/home",
-			"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
+			"img"  : "/ressources/img/baseline_view_list_black_18dp.png",
+			"admin" : false,
 		}
 	]
 
@@ -49,30 +50,36 @@ function makeMenu() {
 				"name" : "My profile",
 				"href" : "/player",
 				"img"  : "/ressources/img/baseline_account_circle_black_18dp.png",
+				"admin" : false,
 			},{
 				"name" : "Log out",
 				"href" : "/signout",
 				"img"  : "/ressources/img/baseline_power_settings_new_black_18dp.png",
+				"admin" : false,
 			}
 		]);
 	}
 	if (admin){
 		menu.push(...[{
 				"name" : "Current",
-				"href" : "/home",
-				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
+				"href" : "/currentGames",
+				"img"  : "/ressources/img/baseline_view_list_black_18dp.png",
+				"admin" : true,
 			},{
 				"name" : "Past",
-				"href" : "/home",
-				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
+				"href" : "/pastGames",
+				"img"  : "/ressources/img/baseline_view_list_black_18dp.png",
+				"admin" : true,
 			},{
 				"name" : "Players",
-				"href" : "/home",
-				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
+				"href" : "/listPlayers",
+				"img"  : "/ressources/img/baseline_view_list_black_18dp.png",
+				"admin" : true,
 			},{
 				"name" : "Games",
-				"href" : "/home",
-				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
+				"href" : "/games",
+				"img"  : "/ressources/img/baseline_view_list_black_18dp.png",
+				"admin" : true,
 		}]);
 	}
 

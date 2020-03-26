@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="/ressources/css/style.css" />
 	<script type="text/javascript" src="/ressources/js/signup.js">
 	</script>
-	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>
 
 <body>
