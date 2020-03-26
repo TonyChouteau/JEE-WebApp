@@ -119,7 +119,6 @@ public class Players extends HttpServlet {
     // TODO editProfile
         String username = req.getParameter("username");
         String email = req.getParameter("email");
-        String birthday = req.getParameter("birthday");
         String password = req.getParameter("password");
 
         int uid = Integer.parseInt(req.getSession().getAttribute("uid").toString());
@@ -127,10 +126,10 @@ public class Players extends HttpServlet {
         User u = db.getUser(uid);
         String p = db.getUserPassword(uid);
 
-        username = username.equals("") ? u.getPseudo() : username;
-        email = email.equals("") ? u.getEmail() : email;
-        birthday = birthday.equals("") ? u.getBirthday().toString() : birthday;
-        password = password.equals("") ? p : password;
+        username = (username == null || username == "") ? u.getPseudo() : username;
+        email = (email == null || email == "") ? u.getEmail() : email;
+        String birthday = u.getBirthday().toString();
+        password = (password == null || password == "") ? p : password;
 
         if (db.editProfile(uid, username, email, password, new Date(Time.valueOf(birthday).getTime())) == 0) {
             resp.sendError(HttpServletResponse.SC_OK);
