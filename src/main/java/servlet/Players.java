@@ -139,6 +139,7 @@ public class Players extends HttpServlet {
 
 
         if (res) {
+            req.getSession().setAttribute("username", username);
             displayPage(req, resp, "/profile.jsp");
         } else {
             resp.sendError(HttpServletResponse.SC_CONFLICT);
