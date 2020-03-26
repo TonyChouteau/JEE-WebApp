@@ -9,25 +9,7 @@
     </title>
     <link rel="shortcut icon" href="/ressources/img/logo.png">
     <img id="logo" src="/ressources/img/logo.png">
-    <script type="text/javascript">
-        function loadGame(){
-            //Nothing for now
-        }
-        let playing = false;
-        let score = 0;
-        function playingButton() {
-            playing = !playing;
-        }
-        setInterval(() => {
-            play()
-        }, 1000)
-        function play(){
-            if (playing){
-                score ++;
-                document.getElementById("score").innerHTML = score;
-                console.log(score);
-            }
-        }
+    <script type="text/javascript" src='/ressources/js/games/<%= req.getParameter("gid")'>
     </script>
 </head>
 

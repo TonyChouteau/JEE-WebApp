@@ -295,4 +295,20 @@ public class DB implements DBInt {
         }
         return null;
     }
+
+    public String getUserPassword (int uid) {
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT password FROM User WHERE idUser = ? ;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setLong(1, uid);
+            ResultSet resultset = state.executeQuery();
+            if (resultset.next()){
+                return ( resultset.getString("password") );
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }

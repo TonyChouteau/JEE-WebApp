@@ -3,6 +3,7 @@ package servlet;
 import data.DB;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
@@ -81,18 +82,28 @@ public class Connect extends HttpServlet {
     }
 
     private void postSignup(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    // TODO Check les paramètres !!!
-        String username = req.getParameter("username");
-        Date d = new Date(42);
-        int uid = db.signup(username, req.getParameter("email"), req.getParameter("password"), d);
 
+        String username = checkParam(req, "username");
+        String email = checkParam(req, "email");
+        String password = checkParam(req, "password");
+        String birthday = checkParam(req, "birthday");
+
+        if (username == null || email == null || checkParam(req, "password") == null || birthday == null) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+
+        System.out.println(birthday);
+        Date d = Date.valueOf(birthday);
+        int uid = db.signup(username, email, password, d);
+        System.out.println(uid);
         if (uid >= 0) {
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
             session.setAttribute("uid", uid);
             resp.sendRedirect("/home");
         } else {
-            displayPage(req, resp, "/signin.jsp");
+            displayPage(req, resp, "/signup.jsp");
         }
     }
 
@@ -141,7 +152,10 @@ public class Connect extends HttpServlet {
     }
 
     public String checkParam (HttpServletRequest req, String param) {
-        //TODO
-        return null;
+        if (req.getParameter(param).equals("")) {
+            return null;
+        } else {
+            return req.getParameter(param);
+        }
     }
 }

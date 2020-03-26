@@ -11,6 +11,8 @@ import jdk.nashorn.internal.parser.JSONParser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -96,8 +98,26 @@ public class Players extends HttpServlet {
     private void postPlayer(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
     // TODO editProfile
+        String username = req.getParameter("username");
+        String email = req.getParameter("email");
+        String birthday = req.getParameter("birthday");
+        String password = req.getParameter("password");
 
-        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+        int uid = Integer.parseInt(req.getSession().getAttribute("uid").toString());
+
+        User u = db.getUser(uid);
+        String p = db.getUserPassword(uid);
+
+        username = username.equals("") ? u.getPseudo() : username;
+        email = email.equals("") ? u.getEmail() : email;
+        birthday = birthday.equals("") ? u.getBirthday().toString() : birthday;
+        password = password.equals("") ? p : password;
+
+        if (db.editProfile(uid, username, email, password, new Date(Time.valueOf(birthday).getTime())) == 0) {
+            resp.sendError(HttpServletResponse.SC_OK);
+        } else {
+            resp.sendError(HttpServletResponse.SC_CONFLICT);
+        }
     }
 
     private void getPlayer(HttpServletRequest req, HttpServletResponse resp) throws IOException {

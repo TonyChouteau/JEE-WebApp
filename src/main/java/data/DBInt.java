@@ -21,5 +21,11 @@ public interface DBInt {
     void submitScore (int gid, int uid, Date begin, Date end);
 
     ArrayList<User> listUser ();
+    ArrayList<Partie> listPartie();
+    ArrayList<Partie> listPartieJeu(int gid);
+    ArrayList<Partie> listPartieJoueur(int uid);
+
+    User getUser (int uid);
+    String getUserPassword (int uid);
 
 }

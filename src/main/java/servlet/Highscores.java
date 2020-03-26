@@ -1,10 +1,15 @@
 package servlet;
 
+import com.google.gson.Gson;
 import data.DB;
 import data.DBInt;
+import data.Partie;
+import data.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,7 +66,19 @@ public class Highscores extends HttpServlet {
     }
 
     private void getGetPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        //TODO Il faut pouvoir récupérer la liste des parties passées
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+        if (uid == null) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        } else if (!db.isAdmin(uid)) {
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+
+        ArrayList<Partie> parties = db.listPartie();
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(new Gson().toJson(parties));
     }
 
     private void postPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -69,7 +86,7 @@ public class Highscores extends HttpServlet {
     }
 
     private void getPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        //TODO Il faut avoir la page d'affichage des parties passées
+        displayPage(req, resp, "past-games.jsp");
     }
 
     private void postSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -86,5 +103,15 @@ public class Highscores extends HttpServlet {
 
     public void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doProcess(req, resp, "POST");
+    }
+
+    private void displayPage (HttpServletRequest req, HttpServletResponse resp, String page) throws IOException{
+
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views" + page);
+        try {
+            rd.forward(req, resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -6,15 +6,8 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap" rel="stylesheet">
     <title>Fluffy Gaming Center</title>
     <link rel="shortcut icon" href="/ressources/img/logo.png">
-    <link rel="stylesheet" href="/ressources/style.css" />
-    <script type="text/javascript">
-        function verifySecondPassword() {
-            if (document.getElementById("fpassword1").value != document.getElementById("fpassword2").value) {
-                document.getElementById("fpassword2").style["border"] = "1px solid red";
-            } else {
-                document.getElementById("fpassword2").style["border"] = "0px #00000000";
-            }
-        }
+    <link rel="stylesheet" href="/ressources/css/style.css" />
+    <script type="text/javascript" src="/ressources/js/signup.js">
     </script>
 </head>
 
