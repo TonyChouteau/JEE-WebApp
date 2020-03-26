@@ -25,6 +25,14 @@ public class Play extends HttpServlet {
         try {
 
             switch (uri) {
+                case "/":
+                    if (mode.equals("GET")) {
+                        getHome(req, resp);
+                    }
+                    else if (mode.equals("POST")) {
+                        postHome(req, resp);
+                    }
+                    break;
                 case "/home":
                     if (mode.equals("GET")) {
                         getHome(req, resp);
