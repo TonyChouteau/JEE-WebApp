@@ -180,9 +180,12 @@ public class DB implements DBInt {
         DB myInstance = DB.getInstance();
         String sql = "UPDATE User SET pseudo = ?, email = ?, password = ?, birthday = ? WHERE idUser = ?;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digest.digest(newPassword.getBytes(StandardCharsets.UTF_8));
+            String s = new String(encodedhash, StandardCharsets.UTF_8);
             state.setString(1, newUsername);
             state.setString(2, newEmail);
-            state.setString(3, newPassword);
+            state.setString(3, s);
             state.setDate(4, newBirthday);
             state.setLong(5, uid);
             int result = state.executeUpdate();
