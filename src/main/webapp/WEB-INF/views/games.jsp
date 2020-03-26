@@ -36,8 +36,6 @@
 			<h1 id="title">
 				<div>
 					<%
-						System.out.println("x");
-						System.out.println(session.getAttribute("username"));
 						if (session.getAttribute("username") != null) {
 					%>
 					<%= session.getAttribute("username") %>
@@ -63,7 +61,7 @@
 				<button id="play-button" class="button" onclick="playingButton()">
 					Play
 				</button>
-				<button class="button" onclick="submitButton()">
+				<button class="button" onclick="submitScore()">
 					Submit
 				</button>
 			</div>

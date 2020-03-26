@@ -91,6 +91,8 @@ public class Highscores extends HttpServlet {
 
     private void postSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //db.submitScore(req.);
+        System.out.println("Pouet");
+        System.out.println(req.getParameter("uid"));
     }
 
     private void getSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {

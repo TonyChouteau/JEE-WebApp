@@ -13,8 +13,8 @@
         <%
             Jeu j = DB.getInstance().getJeu(Integer.parseInt(request.getParameter("gid")));
         %>
-        let gameID = <%= j.getGid() %>
-        let userID = <%= session.getAttribute("uid") %>
+        let gameID = <%=j.getGid()%>
+        let userID = <%=session.getAttribute("uid")%>
     </script>
     <script type="text/javascript" src='/ressources/js/games/<%=request.getParameter("gid")%>.js'></script>
 </head>

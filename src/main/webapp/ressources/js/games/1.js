@@ -33,5 +33,6 @@ function submitScore(){
             "gid"   : gameID,
             "score" : score,
         }
-    })
+    }).then(function (x) {
+    console.log(x)})
 }
