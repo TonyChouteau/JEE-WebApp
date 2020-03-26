@@ -11,7 +11,7 @@
 
 <body>
     <div>
-        <img id="logo" src="/ressources/img/logo.png">
+        <a href="/home"><img id="logo" src="/ressources/img/logo.png"></a>
     </div>
     <div id="login-page">
         <div id="login-panel">

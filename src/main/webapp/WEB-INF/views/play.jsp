@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/ressources/css/style.css" />
     <title>Fluffy Gaming Center</title>
     <link rel="shortcut icon" href="/ressources/img/logo.png">
-    <img id="logo" src="/ressources/img/logo.png">
+    <a href="/home"><img id="logo" src="/ressources/img/logo.png"></a>
     <script>
         <%
             Jeu j = DB.getInstance().getJeu(Integer.parseInt(request.getParameter("gid")));

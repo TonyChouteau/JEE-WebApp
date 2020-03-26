@@ -8,7 +8,7 @@
     <link href="/ressources/css/style.css" rel="stylesheet">
     <title>Fluffy Gaming Center</title>
     <link rel="shortcut icon" href="/ressources/img/logo.png">
-    <img id="logo" src="/ressources/img/logo.png">
+    <a href="/home"><img id="logo" src="/ressources/img/logo.png"></a>
     <script type="text/javascript" src="/ressources/js/profile.js"></script>
 	<script>
 		let logged = <%= session.getAttribute("uid") != null %>
