@@ -292,6 +292,44 @@ a, a:hover, a:active, a:focus {
     justify-content: center;
 }
 
+.current-id{
+    width: 10%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+.current-user{
+    width: 40%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+.current-game{
+    width: 40%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+.current-cancel{
+    width: 10%;
+    background-color: red;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+
+.past-info{
+    width: 22.5%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+
 .player-id{
     width: 10%;
     display: flex;
