@@ -2,6 +2,7 @@ package servlet;
 
 import data.DB;
 import data.DBInt;
+import data.Jeu;
 import data.User;
 
 import java.io.IOException;
@@ -107,7 +108,16 @@ public class Play extends HttpServlet {
             }
             try {
                 int gid = Integer.parseInt(req.getParameter("gid"));
-                displayPage(req, resp, "/play.jsp");
+                Jeu j = db.getJeu(gid);
+                if (j == null) {
+                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+                    return;
+                }
+                if (j.isAvailable()) {
+                    displayPage(req, resp, "/play.jsp");
+                } else {
+                    resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+                }
             } catch (NumberFormatException e) {
                 System.out.println(req.getParameter("gid") + " is not a valid gid");
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST);

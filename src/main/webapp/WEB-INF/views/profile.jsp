@@ -5,13 +5,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap" rel="stylesheet">
-    <title>Fluffy Gaming Center
-    </title>
+    <link href="/ressources/css/style.css" rel="stylesheet">
+    <title>Fluffy Gaming Center</title>
     <link rel="shortcut icon" href="/ressources/img/logo.png">
     <img id="logo" src="/ressources/img/logo.png">
-    <script type="text/javascript" src="/ressources/js/profile.js">
-
-    </script>
+    <script type="text/javascript" src="/ressources/js/profile.js"></script>
 </head>
 
 <body onload="loadData()">

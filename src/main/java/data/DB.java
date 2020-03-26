@@ -24,10 +24,10 @@ public class DB implements DBInt {
     }
 
     public static DB getInstance() {
-        System.out.println("test"+instance);
         if (instance==null){
             instance = new DB();
         }
+        System.out.println(instance);
         return instance;
     }
 
