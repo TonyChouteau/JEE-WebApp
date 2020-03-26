@@ -38,7 +38,6 @@ function loadProfileInfo() {
     }).then(data => {
         document.getElementById("femail").value = data.email;
         document.getElementById("fusername").value = data.pseudo;
-        document.getElementById("fdate").value = data.birthday;
     })
 }
 function loadCurrentGame() {
