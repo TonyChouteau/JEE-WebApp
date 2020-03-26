@@ -22,8 +22,13 @@ function getItems(menu){
 	return menu.map((elt) => {
 		return `
 			<a href="`+elt.href+`"  class="menu-item">
-				<div>
-					`+elt.name+`
+				<div class="item-container">
+					<div>
+						<img src="`+elt.img+`" class="logo">
+					</div>
+					<div>
+						`+elt.name+`
+					</div>
 				</div>
 			</a>
 		`
@@ -37,19 +42,23 @@ function makeMenu() {
 	if (logged){
 		menu = [{
 				"name" : "Games",
-				"href" : "/home"
+				"href" : "/home",
+				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
 			},{
 				"name" : "My profile",
-				"href" : "/player"
+				"href" : "/player",
+				"img"  : "/ressources/img/baseline_account_circle_black_18dp.png",
 			},{
 				"name" : "Log out",
-				"href" : "/signout"
+				"href" : "/signout",
+				"img"  : "/ressources/img/baseline_power_settings_new_black_18dp.png",
 			}
 		]
 	} else {
 		menu = [{
 				"name" : "Games",
-				"href" : "/home"
+				"href" : "/home",
+				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
 			}
 		]
 	}

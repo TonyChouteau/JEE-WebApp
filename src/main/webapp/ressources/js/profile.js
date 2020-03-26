@@ -13,6 +13,7 @@ function loadData() {
 }
 function loadProfileInfo() {
     //fetch to get players personal information
+    
 }
 function loadCurrentGame() {
     data = "Game 1";

@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>
 
-<body>
+<body onload="loadGames()">
 	<div id="page">
 		<div id="menu-panel">
 			<%
@@ -31,9 +31,13 @@
 			%>
 		</div>
 		<div id="content-panel">
-			<h3 class="pageTitle">
-			</h3>
-			
+			<div id="profile-bottom">
+                <div id="games-list" class="games-title">
+                    <h3 class="game-list-title">
+						Available Games 
+                    </h3>
+				</div>
+            </div>
 		</div>
 	</div>
 </body>
