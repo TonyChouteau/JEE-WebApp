@@ -50,6 +50,7 @@
         <url-pattern>/play</url-pattern>
         <url-pattern>/currentGames</url-pattern>
         <url-pattern>/getCurrentGames</url-pattern>
+        <url-pattern>/getGames</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
