@@ -101,6 +101,10 @@ public class Connect extends HttpServlet {
         String password = checkParam(req, "password");
         String birthday = checkParam(req, "birthday");
 
+        if (!req.getParameter("password").equals(req.getParameter("password2"))) {
+            displayPage(req, resp, "/signup.jsp");
+        }
+
         if (username == null || email == null || checkParam(req, "password") == null || birthday == null) {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
             return;

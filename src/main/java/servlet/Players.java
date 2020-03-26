@@ -121,6 +121,11 @@ public class Players extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
+        if (!req.getParameter("password2").equals(password)) {
+            displayPage(req, resp, "/signup.jsp");
+            return;
+        }
+
         int uid = Integer.parseInt(req.getSession().getAttribute("uid").toString());
 
         User u = db.getUser(uid);
