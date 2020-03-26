@@ -24,6 +24,7 @@
         <servlet-name>admin</servlet-name>
         <url-pattern>/ban</url-pattern>
         <url-pattern>/unban</url-pattern>
+        <url-pattern>/games</url-pattern>
         <url-pattern>/addGame</url-pattern>
         <url-pattern>/removeGame</url-pattern>
         <url-pattern>/endGame</url-pattern>
@@ -50,6 +51,7 @@
         <url-pattern>/play</url-pattern>
         <url-pattern>/currentGames</url-pattern>
         <url-pattern>/getCurrentGames</url-pattern>
+        <url-pattern>/getGames</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

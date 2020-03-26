@@ -1,11 +1,10 @@
 package servlet;
 
-import data.DB;
-import data.DBInt;
-import data.Jeu;
-import data.User;
+import com.google.gson.Gson;
+import data.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +17,7 @@ public class Play extends HttpServlet {
 
     private final static long serialVersionUID = 1L;
     private DBInt db = DB.getInstance();
+    private CurrentGamesInt currentGames = CurrentGames.getInstance();
 
     private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) throws ServletException, IOException {
         String uri = req.getRequestURI();
@@ -57,6 +57,15 @@ public class Play extends HttpServlet {
                         postGetCurrentGames(req, resp);
                     }
                     break;
+                case "/getGames":
+                    if (mode.equals("GET")) {
+                        getGetGames(req, resp);
+                    }
+                    else if (mode.equals("POST")) {
+                        postGetGames(req, resp);
+                    }
+                    break;
+
                 default :
                     System.out.println("URI non reconnue : " + uri);
                     break;
@@ -66,12 +75,36 @@ public class Play extends HttpServlet {
         }
     }
 
+    private void postGetGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    }
+
+    private void getGetGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        ArrayList<Jeu> jeux = db.listJeux();
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(new Gson().toJson(jeux));
+    }
+
     private void postGetCurrentGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     private void getGetCurrentGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        // TODO Il faut récupérer les parties en cours
+
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+        if (uid == null) {
+
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        } else if (!db.isAdmin(uid)) {
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+
+        ArrayList<GameLine> parties = currentGames.getAllgames();
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(new Gson().toJson(parties));
     }
 
     private void postCurrentGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -79,7 +112,17 @@ public class Play extends HttpServlet {
     }
 
     private void getCurrentGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        displayPage(req, resp, "/current-games.jsp");
+
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+        if (uid == null) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        } else if (!db.isAdmin(uid)) {
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+
+        displayPage(req, resp, "/admin/current.jsp");
     }
 
     private void postPlay(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -101,33 +144,35 @@ public class Play extends HttpServlet {
         }
         User u = db.getUser(uid);
 
-        if (u != null) {
-            if (u.getBanned() == 1) {
-                resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+        if (u == null) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+        if (u.getBanned() == 1) {
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+        try {
+            int gid = Integer.parseInt(req.getParameter("gid"));
+            Jeu j = db.getJeu(gid);
+            if (j == null) {
+                resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
                 return;
             }
-            try {
-                int gid = Integer.parseInt(req.getParameter("gid"));
-                Jeu j = db.getJeu(gid);
-                if (j == null) {
-                    resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
-                    return;
-                }
-                if (j.isAvailable()) {
-                    displayPage(req, resp, "/play.jsp");
-                } else {
-                    resp.sendError(HttpServletResponse.SC_FORBIDDEN);
-                }
-            } catch (NumberFormatException e) {
-                System.out.println(req.getParameter("gid") + " is not a valid gid");
-                resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            if (j.isAvailable()) {
+                currentGames.addGame(uid, gid);
+                displayPage(req, resp, "/play.jsp");
+            } else {
+                resp.sendError(HttpServletResponse.SC_FORBIDDEN);
             }
-        } else {
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+        } catch (NumberFormatException e) {
+            System.out.println(req.getParameter("gid") + " is not a valid gid");
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
 
     private void postHome(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        // TODO jeux favoris
         resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 

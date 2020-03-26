@@ -9,40 +9,37 @@
     <title>Fluffy Gaming Center</title>
     <link rel="shortcut icon" href="/ressources/img/logo.png">
     <img id="logo" src="/ressources/img/logo.png">
-    <script type="text/javascript" src='/ressources/js/games/<%=request.getParameter("gid")%>.js'></script>
+    <script>
+        <%
+            Jeu j = DB.getInstance().getJeu(Integer.parseInt(request.getParameter("gid")));
+        %>
+        let gameID = <%=j.getGid()%>
+        let userID = <%=session.getAttribute("uid")%>
+    </script>
+    <script type="text/javascript" src="/ressources/js/games/<%=j.getGid()%>.js"></script>
+	<script>
+		let logged = <%= session.getAttribute("uid") != null %>
+		let admin = <%= session.getAttribute("isAdmin") == 1 %>
+	</script>
+	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>
 
 <body onload="loadGame()">
-    <%
-        Jeu j = DB.getInstance().getJeu(Integer.parseInt(request.getParameter("gid")));
-    %>
 
     <div id="page">
-        <div id="menu-panel">
-            <h1 id="menu">
-                <div class="menu-item">
-                    <div>
-                        Games
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        Players
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        Games
-                    </div>
-                </div>
-            </h1>
-            <div class="verticalSeparator"></div>
-            <h1 id="title">
-                <div>
-                    <%=session.getAttribute("username")%>
-                </div>
-            </h1>
-        </div>
+		<div id="menu-panel" >
+			<%
+				if (session.getAttribute("username") != null) {
+			%>
+			<%= session.getAttribute("username") %>
+			<%
+				} else {
+			%>
+			<a href="/signin">Sign in</a> / <a href="/signup">Sign up</a>
+			<%
+				}
+			%>
+		</div>
         <div id="content-panel">
             <h3 id="game-title">
                 <%=j.getName()%>
@@ -53,12 +50,12 @@
                 </h2>
             </div>
             <div id="buttons">
-                    <button id="play-button" class="button" onclick="playingButton()">
-                        Play
-                    </button>
-                    <button class="button" onclick="submitButton()">
-                        Submit
-                    </button>
+                <button id="play-button" class="button" onclick="playingButton()">
+                    Play
+                </button>
+                <button id="submit-button" class="button" onclick="submitScore()">
+                    Submit
+                </button>
             </div>
         </div>
     </div>

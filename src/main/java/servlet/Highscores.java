@@ -1,10 +1,7 @@
 package servlet;
 
 import com.google.gson.Gson;
-import data.DB;
-import data.DBInt;
-import data.Partie;
-import data.User;
+import data.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +17,7 @@ public class Highscores extends HttpServlet {
 
     private final static long serialVersionUID = 1L;
     private DBInt db = DB.getInstance();
+    private CurrentGames currentGames = CurrentGames.getInstance();
 
     private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) {
         String uri = req.getRequestURI();
@@ -86,11 +84,26 @@ public class Highscores extends HttpServlet {
     }
 
     private void getPastGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        displayPage(req, resp, "past-games.jsp");
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+
+        if (uid == null) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+        else if (!db.isAdmin(uid)) {
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+
+        displayPage(req, resp, "/admin/past.jsp");
     }
 
     private void postSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        //db.submitScore(req.);
+        PartieFinie p = (new Gson()).fromJson(req.getReader().readLine(), PartieFinie.class);
+        System.out.println(p);
+        GameLine g = currentGames.removeGame(p.getUid());
+        db.submitScore(g.getGame(), g.getIdUser(), g.getGameBeginD(), g.getGameEndD());
+        resp.sendRedirect("/home");
     }
 
     private void getSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {

@@ -1,6 +1,7 @@
 package data;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public interface DBInt {
@@ -19,12 +20,13 @@ public interface DBInt {
     void removeGame (int gid);
     void addGame (int gid);
 
-    void submitScore (int gid, int uid, Date begin, Date end);
+    void submitScore (int gid, int uid, Timestamp begin, Timestamp end);
 
     ArrayList<User> listUser ();
     ArrayList<Partie> listPartie();
     ArrayList<Partie> listPartieJeu(int gid);
     ArrayList<Partie> listPartieJoueur(int uid);
+    ArrayList<Jeu> listJeux ();
 
     User getUser (int uid);
     String getUserPassword (int uid);

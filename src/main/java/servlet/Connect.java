@@ -1,6 +1,8 @@
 package servlet;
 
+import com.google.gson.Gson;
 import data.DB;
+import data.User;
 
 import java.io.IOException;
 import java.sql.Time;
@@ -68,7 +70,18 @@ public class Connect extends HttpServlet {
     }
 
     private void getEditProfile(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        displayPage(req, resp, "/WEB-INF/views/profile.jsp");
+        int uid;
+        try {
+            uid = Integer.parseInt(req.getSession().getAttribute("uid").toString());
+        } catch (NumberFormatException e) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
+        User u = db.getUser(uid);
+
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(new Gson().toJson(u));
     }
 
     private void postSignout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -98,9 +111,11 @@ public class Connect extends HttpServlet {
         int uid = db.signup(username, email, password, d);
         System.out.println(uid);
         if (uid >= 0) {
+            User u = db.getUser(uid);
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
             session.setAttribute("uid", uid);
+            session.setAttribute("isAdmin", u.getIsAdmin());
             resp.sendRedirect("/home");
         } else {
             displayPage(req, resp, "/signup.jsp");
@@ -116,11 +131,13 @@ public class Connect extends HttpServlet {
         String username = req.getParameter("username");
 
         int uid = db.signin(username, req.getParameter("password"));
+        User u = db.getUser(uid);
 
         if (uid >= 0) {
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
             session.setAttribute("uid", uid);
+            session.setAttribute("isAdmin", u.getIsAdmin());
             resp.sendRedirect("/home");
 
         } else {

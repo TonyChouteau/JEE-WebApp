@@ -92,7 +92,18 @@ public class Players extends HttpServlet {
     }
 
     private void getListPlayers(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        displayPage(req, resp, "/players.jsp");
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+
+        if (uid == null) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+        else if (!db.isAdmin(uid)) {
+            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+            return;
+        }
+
+        displayPage(req, resp, "/admin/players.jsp");
     }
 
     private void postPlayer(HttpServletRequest req, HttpServletResponse resp) throws IOException {

@@ -1,9 +1,12 @@
 package servlet;
 
+import data.CurrentGames;
+import data.CurrentGamesInt;
 import data.DB;
 import data.DBInt;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +19,7 @@ public class Admin extends HttpServlet {
 
     private final static long serialVersionUID = 1L;
     private DBInt db = DB.getInstance();
+    private CurrentGamesInt currentGames = CurrentGames.getInstance();
     
     private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) {
         String uri = req.getRequestURI();
@@ -48,6 +52,14 @@ public class Admin extends HttpServlet {
                     }
                     else if (mode.equals("POST")) {
                         postUnban(req, resp, uid);
+                    }
+                    break;
+                case "/games":
+                    if (mode.equals("GET")) {
+                        getGames(req, resp, uid);
+                    }
+                    else if (mode.equals("POST")) {
+                        postGames(req, resp, uid);
                     }
                     break;
                 case "/addGame":
@@ -83,9 +95,22 @@ public class Admin extends HttpServlet {
         }
     }
 
-    private void postEndGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
-        //TODO Il faut avoir CurrentGames
+    private void postGames(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+    }
 
+    private void getGames(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+        displayPage(req, resp ,"/admin/games.jsp");
+    }
+
+    private void postEndGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+
+        try {
+            int i = Integer.parseInt(req.getReader().readLine());
+            currentGames.removeGame(i);
+        } catch (NumberFormatException e) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
 
     private void getEndGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
@@ -162,5 +187,16 @@ public class Admin extends HttpServlet {
 
     public void doPost (HttpServletRequest req, HttpServletResponse resp) {
         doProcess(req, resp, "POST");
+    }
+
+
+    private void displayPage (HttpServletRequest req, HttpServletResponse resp, String page) throws IOException{
+
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views" + page);
+        try {
+            rd.forward(req, resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
     }
 }

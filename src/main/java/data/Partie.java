@@ -8,14 +8,24 @@ public class Partie{
     private int uid;
     private int gid;
     private String nameUser;
+    private String nameGame;
     private Date dateDebut;
     private Date dateFin;
 
-    public Partie(int pid, int uid, int gid, String nameUser, Date dateDebut, Date dateFin) {
+    public String getNameGame() {
+        return nameGame;
+    }
+
+    public void setNameGame(String nameGame) {
+        this.nameGame = nameGame;
+    }
+
+    public Partie(int pid, int uid, int gid, String nameUser, String nameGame, Date dateDebut, Date dateFin) {
         this.pid = pid;
         this.uid = uid;
         this.gid = gid;
         this.nameUser = nameUser;
+        this.nameGame = nameGame;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
     }
