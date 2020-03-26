@@ -9,6 +9,9 @@
 	<title>Fluffy Gaming Center</title>
 	<link rel="shortcut icon" href="/ressources/img/logo.png">
 	<img id="logo" src="/ressources/img/logo.png">
+	<script>
+		let logged = <%= session.getAttribute("uid") != null %>
+	</script>
 	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>
 

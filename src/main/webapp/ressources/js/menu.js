@@ -18,44 +18,55 @@
 
 */
 
+function getItems(menu){
+	return menu.map((elt) => {
+		return `
+			<a href="`+elt.href+`"  class="menu-item">
+				<div>
+					`+elt.name+`
+				</div>
+			</a>
+		`
+	}).join(' ')
+}
 
 function makeMenu() {
 
-	let menu = [
-		"Games",
-		"My Profile",
-		"Log Out",
-	]
-	console.log("x")
+	let menu = []
+
+	if (logged){
+		menu = [{
+				"name" : "Games",
+				"href" : "/home"
+			},{
+				"name" : "My profile",
+				"href" : "/player"
+			},{
+				"name" : "Log out",
+				"href" : "/signout"
+			}
+		]
+	} else {
+		menu = [{
+				"name" : "Games",
+				"href" : "/home"
+			}
+		]
+	}
 
 	let content = document.getElementById("menu-panel").innerHTML;
 	
 	document.getElementById("menu-panel").innerHTML = `
 		<h1 id="menu">
-			<div class="menu-item">
-				<div>
-					Games
-				</div>
-			</div>
-			<div class="menu-item">
-				<div>
-					Players
-				</div>
-			</div>
-			<div class="menu-item">
-				<div>
-					Games
-				</div>
-			</div> 
+			` + getItems(menu) + `
         </h1>
         <div class="verticalSeparator"></div>
         <h1 id="title">
             <div>
-	` + content + `
+				` + content + `
             </div>
         </h1>
     `
 }
 
-console.log("x")
-window.onload = makeMenu;
+window.addEventListener("load", makeMenu, true);

@@ -17,13 +17,16 @@
         let userID = <%=session.getAttribute("uid")%>
     </script>
     <script type="text/javascript" src="/ressources/js/games/<%=j.getGid()%>.js"></script>
+	<script>
+		let logged = <%= session.getAttribute("uid") != null %>
+	</script>
 	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>
 
 <body onload="loadGame()">
 
     <div id="page">
-		<div id="menu-panel">
+		<div id="menu-panel" >
 			<%
 				if (session.getAttribute("username") != null) {
 			%>
