@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList; // import the ArrayList class
 import java.util.Calendar;
+import java.util.HashMap;
 
 /**
  * Représente la BDD des parties en cours GameLine
@@ -67,14 +68,14 @@ public class CurrentGames implements CurrentGamesInt {
         return null;
     }
 
-    public ArrayList<Integer> getNbJoueurs () {
-        ArrayList<Integer> nb = new ArrayList<>();
+    public HashMap<Integer, Integer> getNbJoueurs () {
+        HashMap<Integer, Integer> nb = new HashMap<>();
 
         for(GameLine gameLine : this.data){
             if (nb.get(gameLine.getGame()) == null) {
-                nb.set(gameLine.getGame(), 0);
+                nb.put(gameLine.getGame(), 0);
             }
-            nb.set(gameLine.getGame(), nb.get(gameLine.getGame()) + 1);
+            nb.put(gameLine.getGame(), nb.get(gameLine.getGame()) + 1);
         }
         return nb;
     }
