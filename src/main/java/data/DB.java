@@ -176,9 +176,9 @@ public class DB implements DBInt {
         }
     }
 
-    public int editProfile(int uid, String newUsername, String newEmail, String newPassword, Date newBirthday) {
+    public int editProfile(int uid, String newUsername, String newEmail, String newPassword) {
         DB myInstance = DB.getInstance();
-        String sql = "UPDATE User SET pseudo = ?, email = ?, password = ?, birthday = ? WHERE idUser = ?;";
+        String sql = "UPDATE User SET pseudo = ?, email = ?, password = ? WHERE idUser = ?;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] encodedhash = digest.digest(newPassword.getBytes(StandardCharsets.UTF_8));
@@ -186,7 +186,6 @@ public class DB implements DBInt {
             state.setString(1, newUsername);
             state.setString(2, newEmail);
             state.setString(3, s);
-            state.setDate(4, newBirthday);
             state.setLong(5, uid);
             int result = state.executeUpdate();
 

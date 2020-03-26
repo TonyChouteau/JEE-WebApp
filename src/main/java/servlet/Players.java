@@ -131,7 +131,7 @@ public class Players extends HttpServlet {
         String birthday = u.getBirthday().toString();
         password = (password == null || password == "") ? p : password;
 
-        if (db.editProfile(uid, username, email, password, new Date(Time.valueOf(birthday).getTime())) == 0) {
+        if (db.editProfile(uid, username, email, password) == 0) {
             resp.sendError(HttpServletResponse.SC_OK);
         } else {
             resp.sendError(HttpServletResponse.SC_CONFLICT);
