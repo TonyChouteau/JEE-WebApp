@@ -130,6 +130,7 @@ public class Play extends HttpServlet {
                 return;
             }
             if (j.isAvailable()) {
+                currentGames.addGame(uid, gid);
                 displayPage(req, resp, "/play.jsp");
             } else {
                 resp.sendError(HttpServletResponse.SC_FORBIDDEN);

@@ -28,11 +28,10 @@ function submitScore(){
         headers: {
             'Content-Type': 'application/json',
         },
-        body: {
+        body: JSON.stringify({
             "uid"   : userID,
             "gid"   : gameID,
             "score" : score,
-        }
-    }).then(function (x) {
-    console.log(x)})
+        })
+    })
 }
