@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap" rel="stylesheet">
     <title>Fluffy Gaming Center
     </title>
+    <link rel="shortcut icon" href="/ressources/img/logo.png">
     <style>
         html,
         body {
