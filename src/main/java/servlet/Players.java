@@ -132,7 +132,7 @@ public class Players extends HttpServlet {
         password = (password == null || password == "") ? p : password;
 
         if (db.editProfile(uid, username, email, password) == 0) {
-            resp.sendError(HttpServletResponse.SC_OK);
+            displayPage(req, resp, "/profile.jsp");
         } else {
             resp.sendError(HttpServletResponse.SC_CONFLICT);
         }
