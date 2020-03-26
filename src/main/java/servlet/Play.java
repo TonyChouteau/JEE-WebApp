@@ -57,6 +57,15 @@ public class Play extends HttpServlet {
                         postGetCurrentGames(req, resp);
                     }
                     break;
+                case "/getGames":
+                    if (mode.equals("GET")) {
+                        getGetGames(req, resp);
+                    }
+                    else if (mode.equals("POST")) {
+                        postGetGames(req, resp);
+                    }
+                    break;
+
                 default :
                     System.out.println("URI non reconnue : " + uri);
                     break;
@@ -64,6 +73,16 @@ public class Play extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void postGetGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    }
+
+    private void getGetGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        ArrayList<Jeu> jeux = db.listJeux();
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(new Gson().toJson(jeux));
     }
 
     private void postGetCurrentGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
