@@ -294,6 +294,13 @@ a, a:hover, a:active, a:focus {
     text-align: center;
     justify-content: center;
 }
+.game-online{
+    width: 10%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
 .game-availability{
     width: 10%;
     display: flex;
