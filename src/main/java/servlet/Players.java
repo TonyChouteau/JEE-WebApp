@@ -56,6 +56,14 @@ public class Players extends HttpServlet {
                         postGetListPlayers(req, resp);
                     }
                     break;
+                case "/getGetPlayer":
+                    if (mode.equals("GET")) {
+                        getGetPlayer(req, resp);
+                    }
+                    else if (mode.equals("POST")) {
+                        postGetPlayer(req, resp);
+                    }
+                    break;
                 default :
                     System.out.println("URI non reconnue : " + uri);
                     break;
@@ -139,7 +147,23 @@ public class Players extends HttpServlet {
         }
     }
 
+    public void getGetPlayer (HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
+        Integer uid = (Integer) req.getSession().getAttribute("uid");
+        if (uid == null) {
+            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+        User u = db.getUser(uid);
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(new Gson().toJson(u));
+
+    }
+
+    public void postGetPlayer (HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+    }
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doProcess(req, resp, "GET");

@@ -61,6 +61,7 @@
         <url-pattern>/player</url-pattern>
         <url-pattern>/listPlayers</url-pattern>
         <url-pattern>/getListPlayers</url-pattern>
+        <url-pattern>/getPlayer</url-pattern>
     </servlet-mapping>
 
 </web-app>
