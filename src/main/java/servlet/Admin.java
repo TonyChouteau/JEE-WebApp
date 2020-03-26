@@ -1,9 +1,12 @@
 package servlet;
 
+import data.CurrentGames;
+import data.CurrentGamesInt;
 import data.DB;
 import data.DBInt;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +19,7 @@ public class Admin extends HttpServlet {
 
     private final static long serialVersionUID = 1L;
     private DBInt db = DB.getInstance();
+    private CurrentGamesInt currentGames = CurrentGames.getInstance();
     
     private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) {
         String uri = req.getRequestURI();
@@ -84,8 +88,13 @@ public class Admin extends HttpServlet {
     }
 
     private void postEndGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
-        //TODO Il faut avoir CurrentGames
 
+        try {
+            int i = Integer.parseInt(req.getReader().readLine());
+            currentGames.removeGame(i);
+        } catch (NumberFormatException e) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
 
     private void getEndGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {

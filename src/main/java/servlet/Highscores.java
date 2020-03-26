@@ -1,10 +1,7 @@
 package servlet;
 
 import com.google.gson.Gson;
-import data.DB;
-import data.DBInt;
-import data.Partie;
-import data.User;
+import data.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +17,7 @@ public class Highscores extends HttpServlet {
 
     private final static long serialVersionUID = 1L;
     private DBInt db = DB.getInstance();
+    private CurrentGames currentGames = CurrentGames.getInstance();
 
     private void doProcess(HttpServletRequest req, HttpServletResponse resp, String mode) {
         String uri = req.getRequestURI();
@@ -90,9 +88,11 @@ public class Highscores extends HttpServlet {
     }
 
     private void postSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        //db.submitScore(req.);
-        System.out.println("Pouet");
-        System.out.println(req.getParameter("uid"));
+        PartieFinie p = (new Gson()).fromJson(req.getReader().readLine(), PartieFinie.class);
+        System.out.println(p);
+        GameLine g = currentGames.removeGame(p.getUid());
+        db.submitScore(g.getGame(), g.getIdUser(), g.getGameBeginD(), g.getGameEndD());
+        resp.sendRedirect("/home");
     }
 
     private void getSubmitScore(HttpServletRequest req, HttpServletResponse resp) throws IOException {

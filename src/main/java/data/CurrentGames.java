@@ -1,6 +1,7 @@
 package data;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList; // import the ArrayList class
 import java.util.Calendar;
 
@@ -49,12 +50,23 @@ public class CurrentGames implements CurrentGamesInt {
         for(GameLine gameLine : this.data){
             if(gameLine.getIdUser() == idUser){
                 this.data.remove(gameLine);
-                gameLine.setGameEndD(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
+                gameLine.setGameEndD(new Timestamp(Calendar.getInstance().getTime().getTime()));
                 return gameLine;
             }
         }
         return new GameLine(idUser, -1);
     }
+
+    @Override
+    public GameLine getGame(int uid) {
+        for(GameLine gameLine : this.data){
+            if(gameLine.getIdUser() == uid){
+                return gameLine;
+            }
+        }
+        return null;
+    }
+
     /**
      * Retourne une arrayList de toutes les parties en cours
      */

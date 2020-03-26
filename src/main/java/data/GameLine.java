@@ -1,6 +1,8 @@
 package data;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Calendar;
 /**
  * Représente une partie en cours
@@ -9,13 +11,13 @@ import java.util.Calendar;
 public class GameLine{
     private int idUser;
     private int game;
-    private Date gameBeginD;
-    private Date gameEndD;
+    private Timestamp gameBeginD;
+    private Timestamp gameEndD;
 
     GameLine(int idUser, int game){
         this.idUser = idUser;
         this.game = game;
-        this.gameBeginD = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        this.gameBeginD = new Timestamp(Calendar.getInstance().getTime().getTime());
     }
 
     public int getIdUser() {
@@ -34,19 +36,19 @@ public class GameLine{
         this.game = game;
     }
 
-    public Date getGameBeginD() {
+    public Timestamp getGameBeginD() {
         return gameBeginD;
     }
 
-    public void setGameBeginD(Date gameBeginD) {
+    public void setGameBeginD(Timestamp gameBeginD) {
         this.gameBeginD = gameBeginD;
     }
 
-    public Date getGameEndD() {
+    public Timestamp getGameEndD() {
         return gameEndD;
     }
 
-    public void setGameEndD(Date gameEndD) {
+    public void setGameEndD(Timestamp gameEndD) {
         this.gameEndD = gameEndD;
     }
 }

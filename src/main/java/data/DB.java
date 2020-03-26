@@ -151,14 +151,14 @@ public class DB implements DBInt {
         }
     }
 
-    public void submitScore (int gid, int uid, Date begin, Date end){
+    public void submitScore (int gid, int uid, Timestamp begin, Timestamp end){
         DB myInstance = DB.getInstance();
-        String sql = "INSERT INTO GamesFinished VALUES (null, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO GamesFinished VALUES (null, ?, ?, ?, ?);";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             state.setLong(1, gid);
             state.setLong(2, uid);
-            state.setDate(3, begin);
-            state.setDate(4, end);
+            state.setTimestamp(3, begin);
+            state.setTimestamp(4, end);
             int result = state.executeUpdate();
 
         } catch (Exception e) {
@@ -226,7 +226,7 @@ public class DB implements DBInt {
     public ArrayList<Partie> listPartie(){
         ArrayList<Partie> list = new ArrayList<>();
         DB myInstance = DB.getInstance();
-        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser;";
+        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser JOIN Game ON Game.idGame = GamesFinished.game;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             ResultSet resultset = state.executeQuery();
             while (resultset.next()){
@@ -234,9 +234,10 @@ public class DB implements DBInt {
                 int uid = resultset.getInt("user");
                 int gid = resultset.getInt("game");
                 String pseudo = resultset.getString("pseudo");
+                String nomJeu = resultset.getString("name");
                 Date debut = resultset.getDate("gameBeginD");
                 Date fin = resultset.getDate("gameEndD");
-                Partie game = new Partie(pid, uid, gid, pseudo, debut, fin);
+                Partie game = new Partie(pid, uid, gid, pseudo, nomJeu, debut, fin);
                 list.add(game);
             }
         }
@@ -249,7 +250,7 @@ public class DB implements DBInt {
     public ArrayList<Partie> listPartieJeu(int gid){
         ArrayList<Partie> list = new ArrayList<>();
         DB myInstance = DB.getInstance();
-        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser WHERE game = ?;";
+        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser JOIN Game ON Game.idGame = GamesFinished.game WHERE game = ?;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             state.setInt(1, gid);
             ResultSet resultset = state.executeQuery();
@@ -258,9 +259,10 @@ public class DB implements DBInt {
                 int uid = resultset.getInt("user");
                 int gameid = resultset.getInt("game");
                 String pseudo = resultset.getString("pseudo");
+                String nomJeu = resultset.getString("name");
                 Date debut = resultset.getDate("gameBeginD");
                 Date fin = resultset.getDate("gameEndD");
-                Partie game = new Partie(pid, uid, gameid, pseudo, debut, fin);
+                Partie game = new Partie(pid, uid, gameid, pseudo, nomJeu, debut, fin);
                 list.add(game);
             }
         }
@@ -273,7 +275,7 @@ public class DB implements DBInt {
     public ArrayList<Partie> listPartieJoueur(int uid){
         ArrayList<Partie> list = new ArrayList<>();
         DB myInstance = DB.getInstance();
-        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser WHERE user = ? ORDER BY gameEndD LIMIT 3;";
+        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser JOIN Game ON Game.idGame = GamesFinished.game WHERE user = ? ORDER BY gameEndD LIMIT 3;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
             state.setInt(1, uid);
             ResultSet resultset = state.executeQuery();
@@ -282,9 +284,10 @@ public class DB implements DBInt {
                 int userid = resultset.getInt("user");
                 int gameid = resultset.getInt("game");
                 String pseudo = resultset.getString("pseudo");
+                String nomJeu = resultset.getString("name");
                 Date debut = resultset.getDate("gameBeginD");
                 Date fin = resultset.getDate("gameEndD");
-                Partie game = new Partie(pid, userid, gameid, pseudo, debut, fin);
+                Partie game = new Partie(pid, userid, gameid, pseudo, nomJeu, debut, fin);
                 list.add(game);
             }
         }
@@ -327,8 +330,7 @@ public class DB implements DBInt {
                 Date birthday = resultset.getDate("birthday");
                 int banned = resultset.getInt("banned");
                 int isAdmin = resultset.getInt("isAdmin");
-                User usr = new User(uid, pseudo, email, birthday, banned, isAdmin);
-                return usr;
+                return new User(uid, pseudo, email, birthday, banned, isAdmin);
             }
         }
         catch (Exception e) {
