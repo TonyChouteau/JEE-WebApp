@@ -16,14 +16,14 @@
         let gameID = <%=j.getGid()%>
         let userID = <%=session.getAttribute("uid")%>
     </script>
-    <script type="text/javascript" src="/ressources/js/games/<%=request.getParameter('gid')%>.js"></script>
+    <script type="text/javascript" src="/ressources/js/games/<%=j.getGid()%>.js"></script>
 	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>
 
 <body onload="loadGame()">
 
     <div id="page">
-		<div id="menu-panel" onload="makeMenu()">
+		<div id="menu-panel">
 			<%
 				if (session.getAttribute("username") != null) {
 			%>

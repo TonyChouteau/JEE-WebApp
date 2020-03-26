@@ -14,7 +14,7 @@
 
 <body>
 	<div id="page">
-		<div id="menu-panel" onload="makeMenu()">
+		<div id="menu-panel">
 			<%
 				if (session.getAttribute("username") != null) {
 			%>

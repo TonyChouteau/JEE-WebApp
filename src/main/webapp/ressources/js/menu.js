@@ -18,11 +18,20 @@
 
 */
 
+
 function makeMenu() {
+
+	let menu = [
+		"Games",
+		"My Profile",
+		"Log Out",
+	]
+	console.log("x")
+
 	let content = document.getElementById("menu-panel").innerHTML;
 	
 	document.getElementById("menu-panel").innerHTML = `
-        <h1 id="menu">
+		<h1 id="menu">
 			<div class="menu-item">
 				<div>
 					Games
@@ -48,4 +57,5 @@ function makeMenu() {
     `
 }
 
+console.log("x")
 window.onload = makeMenu;
