@@ -1,21 +1,20 @@
-
+<%@ page import="data.DB,data.Jeu" %>
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
 <html xml:lang="fr" lang="fr">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab&display=swap" rel="stylesheet">
-    <title>Fluffy Gaming Center
-    </title>
+    <link rel="stylesheet" href="/ressources/css/style.css" />
+    <title>Fluffy Gaming Center</title>
     <link rel="shortcut icon" href="/ressources/img/logo.png">
     <img id="logo" src="/ressources/img/logo.png">
-    <script type="text/javascript" src='/ressources/js/games/<%=req.getParameter("gid")%>'>
-    </script>
+    <script type="text/javascript" src='/ressources/js/games/<%=request.getParameter("gid")%>.js'></script>
 </head>
 
 <body onload="loadGame()">
     <%
-        Jeu j = DB.getJeu(req.getParameter("gid"));
+        Jeu j = DB.getInstance().getJeu(Integer.parseInt(request.getParameter("gid")));
     %>
 
     <div id="page">
@@ -40,7 +39,7 @@
             <div class="verticalSeparator"></div>
             <h1 id="title">
                 <div>
-                    <%=session.getParameter("username")%>
+                    <%=session.getAttribute("username")%>
                 </div>
             </h1>
         </div>

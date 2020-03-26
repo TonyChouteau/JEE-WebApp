@@ -2,16 +2,16 @@ package data;
 
 public class Jeu {
 
-    private String nom;
+    private String name;
     private int gid;
     private boolean available;
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setName(String nom) {
+        this.name = nom;
     }
 
     public int getGid() {
@@ -31,7 +31,7 @@ public class Jeu {
     }
 
     public Jeu(String nom, int gid, boolean available) {
-        this.nom = nom;
+        this.name = nom;
         this.gid = gid;
         this.available = available;
     }

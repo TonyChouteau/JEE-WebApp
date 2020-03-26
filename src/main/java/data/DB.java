@@ -44,7 +44,7 @@ public class DB implements DBInt {
 
     public Jeu getJeu (int gid) {
         DB inst = DB.getInstance();
-        String sql = "SELECT * FROM Game WHERE gid = ?;";
+        String sql = "SELECT * FROM Game WHERE idGame = ?;";
         try ( PreparedStatement state = inst.connect.prepareStatement(sql)) {
             state.setInt(1, gid);
 
