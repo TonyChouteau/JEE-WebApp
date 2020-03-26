@@ -7,10 +7,10 @@ import java.util.Calendar;
  * à insérer dans la BDD sql lorsque la partie est terminée
  */
 public class GameLine{
-    public int idUser;
-    public int game;
-    public Date gameBeginD;
-    public Date gameEndD;
+    private int idUser;
+    private int game;
+    private Date gameBeginD;
+    private Date gameEndD;
 
     GameLine(int idUser, int game){
         this.idUser = idUser;
@@ -18,5 +18,35 @@ public class GameLine{
         this.gameBeginD = new java.sql.Date(Calendar.getInstance().getTime().getTime());
     }
 
+    public int getIdUser() {
+        return idUser;
+    }
 
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    public int getGame() {
+        return game;
+    }
+
+    public void setGame(int game) {
+        this.game = game;
+    }
+
+    public Date getGameBeginD() {
+        return gameBeginD;
+    }
+
+    public void setGameBeginD(Date gameBeginD) {
+        this.gameBeginD = gameBeginD;
+    }
+
+    public Date getGameEndD() {
+        return gameEndD;
+    }
+
+    public void setGameEndD(Date gameEndD) {
+        this.gameEndD = gameEndD;
+    }
 }

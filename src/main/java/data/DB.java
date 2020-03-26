@@ -94,7 +94,6 @@ public class DB implements DBInt {
             state.setString(3, s);
             state.setDate(4, birthday);
             int result = state.executeUpdate();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -287,6 +286,27 @@ public class DB implements DBInt {
                 Date fin = resultset.getDate("gameEndD");
                 Partie game = new Partie(pid, userid, gameid, pseudo, debut, fin);
                 list.add(game);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public ArrayList<Jeu> listJeux() {
+
+        ArrayList<Jeu> list = new ArrayList<>();
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM Game;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            ResultSet resultset = state.executeQuery();
+            while (resultset.next()){
+                String name = resultset.getString("name");
+                int gid = resultset.getInt("idGame");
+                boolean av = (resultset.getInt("available") == 1);
+                list.add(new Jeu(name, gid, av));
             }
         }
         catch (Exception e) {

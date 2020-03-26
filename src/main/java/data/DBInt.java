@@ -25,6 +25,7 @@ public interface DBInt {
     ArrayList<Partie> listPartie();
     ArrayList<Partie> listPartieJeu(int gid);
     ArrayList<Partie> listPartieJoueur(int uid);
+    ArrayList<Jeu> listJeux ();
 
     User getUser (int uid);
     String getUserPassword (int uid);
