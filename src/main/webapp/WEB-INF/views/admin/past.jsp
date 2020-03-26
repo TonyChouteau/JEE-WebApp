@@ -36,7 +36,7 @@
 			<div id="profile-bottom">
                 <div id="games-list" class="games-title">
                     <h3 class="game-list-title">
-						Past games 
+						Past Games 
                     </h3>
 				</div>
             </div>

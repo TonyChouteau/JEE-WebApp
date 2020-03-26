@@ -42,3 +42,7 @@ function cancelGame(id){
 
     fetch("/endGame?uid="+id).then(() => {loadCurrent()})
 }
+
+setInterval(() => {
+    loadCurrent()
+},3000)

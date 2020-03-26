@@ -6,6 +6,26 @@ function verifySecondPassword() {
     }
 }
 
+function getDate(str) {
+    const eq = {
+        "janvier"   : 1,
+        "février"   : 2,
+        "mars"      : 3,
+        "avril"     : 4,
+        "mai"       : 5,
+        "juin"      : 6,
+        "juillet"   : 7,
+        "aout"      : 8,
+        "septembre" : 9,
+        "octobre"   : 10,
+        "novembre"  : 11,
+        "decembre"  : 12,
+    }
+    
+    let a = str.split(/[\s,]+/);
+    
+}
+
 function loadData() {
     loadProfileInfo();
     loadCurrentGame();
@@ -13,7 +33,12 @@ function loadData() {
 }
 function loadProfileInfo() {
     //fetch to get players personal information
-    
+    fetch('/getPlayer').then(response => {
+        return response.json()
+    }).then(data => {
+        document.getElementById("femail").value = data.email;
+        document.getElementById("fusername").value = data.pseudo;
+    })
 }
 function loadCurrentGame() {
     data = "Game 1";

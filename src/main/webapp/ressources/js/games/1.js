@@ -1,13 +1,14 @@
-
 function loadGame(){
     //Nothing for now
 }
+
 let playing = false;
 let score = 0;
 function playingButton() {
     playing = !playing;
     if (playing){
         document.getElementById("play-button").innerHTML = "Pause";
+        fetch("/startGame?gid="+gameID)
     } else {
         document.getElementById("play-button").innerHTML = "Continue";
     }
@@ -19,7 +20,6 @@ function play(){
     if (playing){
         score ++;
         document.getElementById("score").innerHTML = score;
-        console.log(score);
     }
 }
 function submitScore(){

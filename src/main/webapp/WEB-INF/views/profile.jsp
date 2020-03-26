@@ -42,33 +42,32 @@
                 </div>
                 <div id="edit-profile">
                     <form id="form-profile" method="POST" action="/player">
-                        <div class="column">
-                            <h3 class="centered-text">
-                                E-mail :
-                            </h3>
-                            <input class="register-input" type="email" id="femail" name="email" placeholder="">
-            
-                            <h3 class="centered-text">
-                                Username :
-                            </h3>
-                            <input class="register-input" type="text" id="fusername" name="username" placeholder="">
-            
-                            <h3 class="centered-text">
-                                Birthday :
-                            </h3>
-                            <input class="register-input" type="date" id="fbirthday" name="birthday" placeholder="">
+                        <div class="sub-container">
+                            <div class="column-profile">
+                                <h3 class="centered-text">
+                                    E-mail :
+                                </h3>
+                                <input class="register-input" type="email" id="femail" name="email" placeholder="">
+                
+                                <h3 class="centered-text">
+                                    Username :
+                                </h3>
+                                <input class="register-input" type="text" id="fusername" name="username" placeholder="">
+                            </div>
+                            <div class="column-profile">
+                                <h3 class="centered-text">
+                                    Password :
+                                </h3>
+                                <input class="register-input" type="password" id="fpassword1" name="password" placeholder="">
+                
+                                <h3 class="centered-text">
+                                    Confirm password :
+                                </h3>
+                                <input class="register-input" type="password" id="fpassword2" onchange="verifySecondPassword()" name="password" placeholder="">
+                                <h1></h1>
+                            </div>
                         </div>
-                        <div class="column">
-                            <h3 class="centered-text">
-                                Password :
-                            </h3>
-                            <input class="register-input" type="password" id="fpassword1" name="password" placeholder="">
-            
-                            <h3 class="centered-text">
-                                Confirm password :
-                            </h3>
-                            <input class="register-input" type="password" id="fpassword2" onchange="verifySecondPassword()" name="password" placeholder="">
-                            <h1></h1>
+                        <div class="sub-container">
                             <input class="register-button" type="submit" value="Save" />
                         </div>
                     </form>
