@@ -117,7 +117,7 @@ public class Admin extends HttpServlet {
         resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
-    private void postRemoveGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+    private void getRemoveGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
         try {
             int gid = Integer.parseInt(req.getParameter("gid"));
             System.out.println(gid + " enabled by " + uid);
@@ -129,11 +129,11 @@ public class Admin extends HttpServlet {
         }
     }
 
-    private void getRemoveGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+    private void postRemoveGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
         resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
-    private void postAddGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+    private void getAddGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
         try {
             int gid = Integer.parseInt(req.getParameter("gid"));
             System.out.println(gid + " enabled by " + uid);
@@ -145,7 +145,7 @@ public class Admin extends HttpServlet {
         }
     }
 
-    private void getAddGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+    private void postAddGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
         resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
