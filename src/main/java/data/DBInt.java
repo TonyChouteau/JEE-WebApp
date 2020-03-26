@@ -7,6 +7,7 @@ public interface DBInt {
 
     int truc();
 
+    Jeu getJeu (int gid);
     int signin (String pseudo, String password);
     int signup (String pseudo, String email, String password, Date birthday);
     int editProfile (int uid, String newUsername, String newEmail, String newPassword, Date newBirthday);

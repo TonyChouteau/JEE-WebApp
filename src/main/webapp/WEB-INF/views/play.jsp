@@ -9,11 +9,15 @@
     </title>
     <link rel="shortcut icon" href="/ressources/img/logo.png">
     <img id="logo" src="/ressources/img/logo.png">
-    <script type="text/javascript" src='/ressources/js/games/<%= req.getParameter("gid")'>
+    <script type="text/javascript" src='/ressources/js/games/<%=req.getParameter("gid")%>'>
     </script>
 </head>
 
 <body onload="loadGame()">
+    <%
+        Jeu j = DB.getJeu(req.getParameter("gid"));
+    %>
+
     <div id="page">
         <div id="menu-panel">
             <h1 id="menu">
@@ -36,13 +40,13 @@
             <div class="verticalSeparator"></div>
             <h1 id="title">
                 <div>
-                    <%=username%>
+                    <%=session.getParameter("username")%>
                 </div>
             </h1>
         </div>
         <div id="content-panel">
             <h3 id="game-title">
-                <%=gameName>
+                <%=j.getName()%>
             </h3>
             <div id="game" onclick="play()">
                 <h2 id="score">

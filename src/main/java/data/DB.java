@@ -42,6 +42,27 @@ public class DB implements DBInt {
         return -1;
     }
 
+    public Jeu getJeu (int gid) {
+        DB inst = DB.getInstance();
+        String sql = "SELECT * FROM Game WHERE gid = ?;";
+        try ( PreparedStatement state = inst.connect.prepareStatement(sql)) {
+            state.setInt(1, gid);
+
+            ResultSet resultset = state.executeQuery();
+            if (resultset.next()){
+                int id = resultset.getInt("idGame");
+                String name = resultset.getString("name");
+                boolean available = (resultset.getInt("available") == 1);
+                return new Jeu(name, id, available);
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public int signin (String pseudo, String password) {
         DB myInstance = DB.getInstance();
         String sql = "SELECT * FROM User WHERE pseudo = ? AND password = ?;";
