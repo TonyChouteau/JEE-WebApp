@@ -184,7 +184,7 @@ public class Play extends HttpServlet {
                 return;
             }
             if (j.isAvailable()) {
-                currentGames.addGame(uid, gid);
+                currentGames.addGame(uid, gid, u.getPseudo(), j.getName());
                 displayPage(req, resp, "/play.jsp");
             } else {
                 resp.sendError(HttpServletResponse.SC_FORBIDDEN);
