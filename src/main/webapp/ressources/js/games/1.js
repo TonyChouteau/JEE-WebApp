@@ -6,6 +6,11 @@ let playing = false;
 let score = 0;
 function playingButton() {
     playing = !playing;
+    if (playing){
+        document.getElementById("play-button").innerHTML = "Pause";
+    } else {
+        document.getElementById("play-button").innerHTML = "Continue";
+    }
 }
 setInterval(() => {
     play()
@@ -16,4 +21,17 @@ function play(){
         document.getElementById("score").innerHTML = score;
         console.log(score);
     }
+}
+function submitScore(){
+    fetch("/submitScore", {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: {
+            "uid"   : uid,
+            "gid"   : gid,
+            "score" : score,
+        }
+    })
 }

@@ -9,13 +9,17 @@
     <title>Fluffy Gaming Center</title>
     <link rel="shortcut icon" href="/ressources/img/logo.png">
     <img id="logo" src="/ressources/img/logo.png">
+    <script>
+        <%
+            Jeu j = DB.getInstance().getJeu(Integer.parseInt(request.getParameter("gid")));
+        %>
+        let gameID = <% j.getGid() %>
+        let userID = <% session.getAttribute("uid"); %>
+    </script>
     <script type="text/javascript" src='/ressources/js/games/<%=request.getParameter("gid")%>.js'></script>
 </head>
 
 <body onload="loadGame()">
-    <%
-        Jeu j = DB.getInstance().getJeu(Integer.parseInt(request.getParameter("gid")));
-    %>
 
     <div id="page">
         <div id="menu-panel">
@@ -53,12 +57,12 @@
                 </h2>
             </div>
             <div id="buttons">
-                    <button id="play-button" class="button" onclick="playingButton()">
-                        Play
-                    </button>
-                    <button class="button" onclick="submitButton()">
-                        Submit
-                    </button>
+                <button id="play-button" class="button" onclick="playingButton()">
+                    Play
+                </button>
+                <button class="button" onclick="submitScore()">
+                    Submit
+                </button>
             </div>
         </div>
     </div>
