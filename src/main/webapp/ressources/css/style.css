@@ -236,11 +236,21 @@ a, a:hover, a:active, a:focus {
 
 #form-profile{
     display: flex;
+    flex-direction: column;
+}
+.sub-container{
+    display: flex;
     flex-direction: row;
 }
 .column{
     width: 50%;
     height: 100%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.column-profile{
+    width: 50%;
     margin: 10px;
     display: flex;
     flex-direction: column;
