@@ -5,6 +5,7 @@ import data.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -94,7 +95,7 @@ public class Play extends HttpServlet {
 
     private void getGetNbPlayers(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        ArrayList<Integer> jeux = currentGames.getNbJoueurs();
+        HashMap<Integer, Integer> jeux = currentGames.getNbJoueurs();
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         resp.getWriter().write(new Gson().toJson(jeux));
