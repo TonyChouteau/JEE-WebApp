@@ -1,6 +1,8 @@
 package data;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 public class Partie{
 
@@ -9,8 +11,8 @@ public class Partie{
     private int gid;
     private String nameUser;
     private String nameGame;
-    private Date dateDebut;
-    private Date dateFin;
+    private Timestamp dateDebut;
+    private Timestamp dateFin;
 
     public String getNameGame() {
         return nameGame;
@@ -20,7 +22,7 @@ public class Partie{
         this.nameGame = nameGame;
     }
 
-    public Partie(int pid, int uid, int gid, String nameUser, String nameGame, Date dateDebut, Date dateFin) {
+    public Partie(int pid, int uid, int gid, String nameUser, String nameGame, Timestamp dateDebut, Timestamp dateFin) {
         this.pid = pid;
         this.uid = uid;
         this.gid = gid;
@@ -62,19 +64,19 @@ public class Partie{
         this.nameUser = nameUser;
     }
 
-    public Date getDateDebut() {
+    public Timestamp getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(Date dateDebut) {
+    public void setDateDebut(Timestamp dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateFin() {
+    public Timestamp getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(Timestamp dateFin) {
         this.dateFin = dateFin;
     }
 
