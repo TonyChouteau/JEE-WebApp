@@ -2,14 +2,15 @@
 function loadGames(){
     //fetch to get past games
     
+    let content = document.getElementById("games-list").innerHTML;
 
     fetch('/getGames').then(response => {
         return response.json()
     }).then(data => {
-        console.log(data)
+        let adding = ""
         for (let i in data){
             if (data[i].available === true) {
-                document.getElementById("games-list").innerHTML+=`
+                adding+=`
                     <a href=/play?gid=`+ data[i].gid +`>
                     <div class="gamelist-item">
                         <div class="game game-id">
@@ -24,6 +25,7 @@ function loadGames(){
                 `;
             }
         }
+        document.getElementById("games-list").innerHTML = content+adding;
     })
     
     

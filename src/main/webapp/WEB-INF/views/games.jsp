@@ -35,9 +35,6 @@
 		<div id="content-panel">
 			<div id="profile-bottom">
                 <div id="games-list" class="games-title">
-                    <h3 class="game-list-title">
-						Available Games 
-                    </h3>
 				</div>
             </div>
 		</div>

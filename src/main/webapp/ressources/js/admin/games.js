@@ -1,24 +1,19 @@
 
-function changeStateGame(id, available){
-    console.log(id, available);
-
-    if (available) {
-        fetch("/removeGame?gid="+id)
-    } else {
-        fetch("/addGame?gid="+id)
-    }
-}
-
 function loadGames(){
     //fetch to get past games
     
+    let content = `
+        <h3 class="game-list-title">
+            Available Games 
+        </h3>
+    `;
 
     fetch('/getGames').then(response => {
         return response.json()
     }).then(data => {
-        console.log(data)
+        let adding = ""
         for (let i in data){
-            document.getElementById("games-list").innerHTML+=`
+            adding+=`
                 <div class="gamelist-item">
                     <div class="game game-id">
                         `+data[i].gid+`
@@ -34,7 +29,16 @@ function loadGames(){
                 </div>
             `;
         }
+        document.getElementById("games-list").innerHTML = content+adding;
     })
-    
-    
+}
+
+function changeStateGame(id, available){
+    console.log(id, available);
+
+    if (available) {
+        fetch("/removeGame?gid="+id).then(() => {loadGames()})
+    } else {
+        fetch("/addGame?gid="+id).then(() => {loadGames()})
+    }
 }
