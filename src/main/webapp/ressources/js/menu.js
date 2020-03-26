@@ -20,7 +20,9 @@
 
 function getItems(menu){
 	return menu.map((elt) => {
-		return `
+		let sep = (elt.name === "Current")?'<div class="verticalSeparator"></div>':"";
+
+		return sep+`
 			<a href="`+elt.href+`" class="menu-item `+(elt.admin?"menu-admin":"")+`">
 				<div class="item-container">
 					<div>

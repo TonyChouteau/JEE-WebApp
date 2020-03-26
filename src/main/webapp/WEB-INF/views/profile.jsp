@@ -79,11 +79,6 @@
                     <h3 class="game-list-title">
                         Current Game (not done)
                     </h3>
-                    <div class="gamelist-item">
-                        <div id="current-game">
-                            None
-                        </div>
-                    </div>
                 </div>
                 <div id="past-games" class="games-title">
                     <h3 class="game-list-title">
