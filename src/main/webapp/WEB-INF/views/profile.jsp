@@ -12,9 +12,11 @@
     <script type="text/javascript" src="/ressources/js/profile.js"></script>
 	<script>
 		let logged = <%= session.getAttribute("uid") != null %>
-		let admin = <%= session.getAttribute("isAdmin")%>
+        let admin = <%= session.getAttribute("isAdmin")%>
+        let pseudo = "<%= session.getAttribute("username")%>"
 	</script>
-	<script type="text/javascript" src="/ressources/js/menu.js"></script>
+    <script type="text/javascript" src="/ressources/js/menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jdenticon@2.2.0" async></script>
 </head>
 
 <body onload="loadData()">
@@ -38,7 +40,6 @@
         <div id="content-panel">
             <div id="profile-top">
                 <div id="picture">
-                    <img id="profile-picture" src="/ressources/img/profile.bmp"/>
                 </div>
                 <div id="edit-profile">
                     <form id="form-profile" method="POST" action="/player">

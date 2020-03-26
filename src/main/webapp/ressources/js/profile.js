@@ -27,9 +27,15 @@ function getDate(str) {
 }
 
 function loadData() {
+    loadProfilePic();
     loadProfileInfo();
-    loadCurrentGame();
-    loadPastGames();
+    /*loadCurrentGame();
+    loadPastGames();*/
+}
+function loadProfilePic(){
+    document.getElementById("picture").innerHTML = `
+        <svg id="profile-picture" data-jdenticon-value="`+pseudo+`"></svg>
+    `
 }
 function loadProfileInfo() {
     //fetch to get players personal information
@@ -40,18 +46,17 @@ function loadProfileInfo() {
         document.getElementById("fusername").value = data.pseudo;
     })
 }
-function loadCurrentGame() {
+/*function loadCurrentGame() {
     data = "Game 1";
     document.getElementById("current-game").innerHTML = data;
 }
 function loadPastGames(){
     //fetch to get past games
-    /*data = [
+    data = [
         "Game1",
         "Game2",
         "Game3",
-    ]*/
-    data = []
+    ]
     for (let i in data){
         document.getElementById("past-games").innerHTML+=`
             <div class="gamelist-item">
@@ -61,4 +66,4 @@ function loadPastGames(){
             </div>
         `;
     }
-}
+}*/
