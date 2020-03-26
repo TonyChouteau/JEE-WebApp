@@ -36,6 +36,6 @@ function submitScore(){
             "uid"   : userID,
             "gid"   : gameID,
             "score" : score,
-        }
+        })
     })
 }
