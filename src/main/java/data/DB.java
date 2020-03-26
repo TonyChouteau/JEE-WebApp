@@ -98,6 +98,16 @@ public class DB implements DBInt {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        String sql2 = "SELECT * FROM User WHERE pseudo = ?;";
+        try ( PreparedStatement state2 = myInstance.connect.prepareStatement(sql2)){
+            state2.setString(1, pseudo);
+            ResultSet resultset = state2.executeQuery();
+            if (resultset.next()){
+                return ( resultset.getInt("idUser"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return -1;
     }
 
