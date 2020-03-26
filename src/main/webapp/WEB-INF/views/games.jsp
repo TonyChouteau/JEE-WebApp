@@ -13,6 +13,7 @@
 		let logged = <%= session.getAttribute("uid") != null %>
 	</script>
 	<script type="text/javascript" src="/ressources/js/menu.js"></script>
+	<script type="text/javascript" src="/ressources/js/games.js"></script>
 </head>
 
 <body onload="loadGames()">
