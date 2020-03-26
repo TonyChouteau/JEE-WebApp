@@ -52,7 +52,7 @@
                 <button id="play-button" class="button" onclick="playingButton()">
                     Play
                 </button>
-                <button class="button" onclick="submitScore()">
+                <button id="submit-button" class="button" onclick="submitScore()">
                     Submit
                 </button>
             </div>

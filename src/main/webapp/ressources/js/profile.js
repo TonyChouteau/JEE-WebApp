@@ -21,11 +21,12 @@ function loadCurrentGame() {
 }
 function loadPastGames(){
     //fetch to get past games
-    data = [
+    /*data = [
         "Game1",
         "Game2",
         "Game3",
-    ]
+    ]*/
+    data = []
     for (let i in data){
         document.getElementById("past-games").innerHTML+=`
             <div class="gamelist-item">
