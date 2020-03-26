@@ -93,6 +93,7 @@ public class Play extends HttpServlet {
 
         Integer uid = (Integer) req.getSession().getAttribute("uid");
         if (uid == null) {
+
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         } else if (!db.isAdmin(uid)) {
