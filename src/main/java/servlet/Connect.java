@@ -111,9 +111,11 @@ public class Connect extends HttpServlet {
         int uid = db.signup(username, email, password, d);
         System.out.println(uid);
         if (uid >= 0) {
+            User u = db.getUser(uid);
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
             session.setAttribute("uid", uid);
+            session.setAttribute("isAdmin", u.getIsAdmin());
             resp.sendRedirect("/home");
         } else {
             displayPage(req, resp, "/signup.jsp");
@@ -129,11 +131,13 @@ public class Connect extends HttpServlet {
         String username = req.getParameter("username");
 
         int uid = db.signin(username, req.getParameter("password"));
+        User u = db.getUser(uid);
 
         if (uid >= 0) {
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
             session.setAttribute("uid", uid);
+            session.setAttribute("isAdmin", u.getIsAdmin());
             resp.sendRedirect("/home");
 
         } else {
