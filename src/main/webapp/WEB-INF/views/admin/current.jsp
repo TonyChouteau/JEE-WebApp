@@ -36,7 +36,7 @@
 			<div id="profile-bottom">
                 <div id="games-list" class="games-title">
                     <h3 class="game-list-title">
-						Current games 
+						Current Games 
                     </h3>
 				</div>
             </div>

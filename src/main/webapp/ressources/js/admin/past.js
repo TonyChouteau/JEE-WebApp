@@ -4,7 +4,7 @@ function loadPast(){
     
     let content = `
         <h3 class="game-list-title">
-            Current Games
+            Past Games
         </h3>
     `;
 
