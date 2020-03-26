@@ -35,3 +35,4 @@ launchingcommands
 /embeddedTomcatSample.iml
 /embeddedTomcatSample.eml
 /.settings/
+.classpath
