@@ -248,8 +248,8 @@ public class DB implements DBInt {
                 int gid = resultset.getInt("game");
                 String pseudo = resultset.getString("pseudo");
                 String nomJeu = resultset.getString("name");
-                Date debut = resultset.getDate("gameBeginD");
-                Date fin = resultset.getDate("gameEndD");
+                Timestamp debut = resultset.getTimestamp("gameBeginD");
+                Timestamp fin = resultset.getTimestamp("gameEndD");
                 Partie game = new Partie(pid, uid, gid, pseudo, nomJeu, debut, fin);
                 list.add(game);
             }
@@ -273,8 +273,8 @@ public class DB implements DBInt {
                 int gameid = resultset.getInt("game");
                 String pseudo = resultset.getString("pseudo");
                 String nomJeu = resultset.getString("name");
-                Date debut = resultset.getDate("gameBeginD");
-                Date fin = resultset.getDate("gameEndD");
+                Timestamp debut = resultset.getTimestamp("gameBeginD");
+                Timestamp fin = resultset.getTimestamp("gameEndD");
                 Partie game = new Partie(pid, uid, gameid, pseudo, nomJeu, debut, fin);
                 list.add(game);
             }
@@ -298,8 +298,8 @@ public class DB implements DBInt {
                 int gameid = resultset.getInt("game");
                 String pseudo = resultset.getString("pseudo");
                 String nomJeu = resultset.getString("name");
-                Date debut = resultset.getDate("gameBeginD");
-                Date fin = resultset.getDate("gameEndD");
+                Timestamp debut = resultset.getTimestamp("gameBeginD");
+                Timestamp fin = resultset.getTimestamp("gameEndD");
                 Partie game = new Partie(pid, userid, gameid, pseudo, nomJeu, debut, fin);
                 list.add(game);
             }

@@ -27,7 +27,7 @@ function loadPlayers(){
                         `+data[i].email+`
                     </div>
                     <div class="verticalSeparator"></div>
-                    <button     onclick="changeStateGame(`+ data[i].uid +`, `+ data[i].banned +`)" class="game player-banabality" style="background-color:`+(data[i].banned?"red":"green")+`;">
+                    <button     onclick="changeStatePlayer(`+ data[i].uid +`, `+ data[i].banned +`)" class="game player-banabality" style="background-color:`+(data[i].banned?"red":"green")+`;">
                         `+(data[i].banned?"banned":"not banned")+`
                     </button>
                 </div>
@@ -37,7 +37,7 @@ function loadPlayers(){
     })
 }
 
-function changeStateGame(id, banned){
+function changeStatePlayer(id, banned){
     console.log(id, banned);
 
     if (!banned) {

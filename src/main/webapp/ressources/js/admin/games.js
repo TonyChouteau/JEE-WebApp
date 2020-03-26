@@ -23,7 +23,7 @@ function loadGames(){
                         `+data[i].name+`
                     </div>
                     <div class="verticalSeparator"></div>
-                    <button     onclick="changeStateGame(`+ data[i].gid +`, `+ data[i].available +`)" class="game game-availability" style="background-color:`+(data[i].available?"green":"red")+`;">
+                    <button onclick="changeStateGame(`+ data[i].gid +`, `+ data[i].available +`)" class="game game-availability" style="background-color:`+(data[i].available?"green":"red")+`;">
                         `+(data[i].available?"available":"disable")+`
                     </button>
                 </div>

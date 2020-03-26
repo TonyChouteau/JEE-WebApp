@@ -11,12 +11,32 @@ import java.util.Calendar;
 public class GameLine{
     private int idUser;
     private int game;
+    private String username;
+    private String gamename;
     private Timestamp gameBeginD;
     private Timestamp gameEndD;
 
-    GameLine(int idUser, int game){
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getGamename() {
+        return gamename;
+    }
+
+    public void setGamename(String gamename) {
+        this.gamename = gamename;
+    }
+
+    GameLine(int idUser, int game, String un, String gn){
         this.idUser = idUser;
         this.game = game;
+        this.username = un;
+        this.gamename = gn;
         this.gameBeginD = new Timestamp(Calendar.getInstance().getTime().getTime());
     }
 

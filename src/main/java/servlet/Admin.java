@@ -114,7 +114,14 @@ public class Admin extends HttpServlet {
     }
 
     private void getEndGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
-        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+        try {
+            int user = Integer.parseInt(req.getParameter("uid"));
+            currentGames.removeGame(user);
+            resp.sendError(HttpServletResponse.SC_OK);
+        } catch (NumberFormatException e) {
+            System.out.println(req.getParameter("uid") + " is not a valid uid");
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
 
     private void getRemoveGame(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {

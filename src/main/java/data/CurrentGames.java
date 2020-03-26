@@ -30,8 +30,8 @@ public class CurrentGames implements CurrentGamesInt {
      * Retourne la GameLine créée si l'ajout a fonctionné et null sinon.
      * Un ajout échoue si le joueur qu'on ajoute joue déjà à un jeu.
      */
-    public GameLine addGame(int idUser, int game){
-        GameLine gameLine = new GameLine(idUser, game);
+    public GameLine addGame(int idUser, int game, String un, String gn){
+        GameLine gameLine = new GameLine(idUser, game, un, gn);
 
         for(GameLine tmpgameLine : this.data){//remove previous current games
             if(tmpgameLine.getIdUser() == idUser){
@@ -54,7 +54,7 @@ public class CurrentGames implements CurrentGamesInt {
                 return gameLine;
             }
         }
-        return new GameLine(idUser, -1);
+        return new GameLine(idUser, -1, null, null);
     }
 
     @Override
