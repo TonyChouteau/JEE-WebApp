@@ -67,6 +67,18 @@ public class CurrentGames implements CurrentGamesInt {
         return null;
     }
 
+    public ArrayList<Integer> getNbJoueurs () {
+        ArrayList<Integer> nb = new ArrayList<>();
+
+        for(GameLine gameLine : this.data){
+            if (nb.get(gameLine.getGame()) == null) {
+                nb.set(gameLine.getGame(), 0);
+            }
+            nb.set(gameLine.getGame(), nb.get(gameLine.getGame()) + 1);
+        }
+        return nb;
+    }
+
     /**
      * Retourne une arrayList de toutes les parties en cours
      */

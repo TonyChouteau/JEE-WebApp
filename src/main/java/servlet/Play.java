@@ -26,13 +26,6 @@ public class Play extends HttpServlet {
 
             switch (uri) {
                 case "/":
-                    if (mode.equals("GET")) {
-                        getHome(req, resp);
-                    }
-                    else if (mode.equals("POST")) {
-                        postHome(req, resp);
-                    }
-                    break;
                 case "/home":
                     if (mode.equals("GET")) {
                         getHome(req, resp);
@@ -47,6 +40,14 @@ public class Play extends HttpServlet {
                     }
                     else if (mode.equals("POST")) {
                         postPlay(req, resp);
+                    }
+                    break;
+                case "/getNbPlayers":
+                    if (mode.equals("GET")) {
+                        getGetNbPlayers(req, resp);
+                    }
+                    else if (mode.equals("POST")) {
+                        postGetNbPlayers(req, resp);
                     }
                     break;
                 case "/startGame":
@@ -89,6 +90,17 @@ public class Play extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void getGetNbPlayers(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        ArrayList<Integer> jeux = currentGames.getNbJoueurs();
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(new Gson().toJson(jeux));
+    }
+
+    private void postGetNbPlayers(HttpServletRequest req, HttpServletResponse resp) {
     }
 
     private void postStartGame(HttpServletRequest req, HttpServletResponse resp) throws IOException {
