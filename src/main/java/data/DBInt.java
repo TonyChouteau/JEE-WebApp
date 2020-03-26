@@ -7,6 +7,7 @@ public interface DBInt {
 
     int truc();
 
+    Jeu getJeu (int gid);
     int signin (String pseudo, String password);
     int signup (String pseudo, String email, String password, Date birthday);
     int editProfile (int uid, String newUsername, String newEmail, String newPassword, Date newBirthday);
@@ -21,5 +22,11 @@ public interface DBInt {
     void submitScore (int gid, int uid, Date begin, Date end);
 
     ArrayList<User> listUser ();
+    ArrayList<Partie> listPartie();
+    ArrayList<Partie> listPartieJeu(int gid);
+    ArrayList<Partie> listPartieJoueur(int uid);
+
+    User getUser (int uid);
+    String getUserPassword (int uid);
 
 }

@@ -1,5 +1,7 @@
 package data;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -40,12 +42,36 @@ public class DB implements DBInt {
         return -1;
     }
 
+    public Jeu getJeu (int gid) {
+        DB inst = DB.getInstance();
+        String sql = "SELECT * FROM Game WHERE idGame = ?;";
+        try ( PreparedStatement state = inst.connect.prepareStatement(sql)) {
+            state.setInt(1, gid);
+
+            ResultSet resultset = state.executeQuery();
+            if (resultset.next()){
+                int id = resultset.getInt("idGame");
+                String name = resultset.getString("name");
+                boolean available = (resultset.getInt("available") == 1);
+                return new Jeu(name, id, available);
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public int signin (String pseudo, String password) {
         DB myInstance = DB.getInstance();
         String sql = "SELECT * FROM User WHERE pseudo = ? AND password = ?;";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            String s = new String(encodedhash, StandardCharsets.UTF_8);
             state.setString(1, pseudo);
-            state.setString(2, password);
+            state.setString(2, s);
             ResultSet resultset = state.executeQuery();
             if (resultset.next()){
                 return resultset.getInt("idUser");
@@ -60,9 +86,12 @@ public class DB implements DBInt {
         DB myInstance = DB.getInstance();
         String sql = "INSERT INTO User VALUES (null, ?, ?, ?, ?, 0, 0);";
         try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            String s = new String(encodedhash, StandardCharsets.UTF_8);
             state.setString(1, pseudo);
             state.setString(2, email);
-            state.setString(3, password);
+            state.setString(3, s);
             state.setDate(4, birthday);
             int result = state.executeUpdate();
 
@@ -240,5 +269,67 @@ public class DB implements DBInt {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public ArrayList<Partie> listPartieJoueur(int uid){
+        ArrayList<Partie> list = new ArrayList<>();
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM GamesFinished JOIN User ON GamesFinished.user = User.idUser WHERE user = ? ORDER BY gameEndD LIMIT 3;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setInt(1, uid);
+            ResultSet resultset = state.executeQuery();
+            while (resultset.next()){
+                int pid = resultset.getInt("idPartie");
+                int userid = resultset.getInt("user");
+                int gameid = resultset.getInt("game");
+                String pseudo = resultset.getString("pseudo");
+                Date debut = resultset.getDate("gameBeginD");
+                Date fin = resultset.getDate("gameEndD");
+                Partie game = new Partie(pid, userid, gameid, pseudo, debut, fin);
+                list.add(game);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public User getUser(int uid){
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT * FROM User WHERE idUser = ?;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setInt(1, uid);
+            ResultSet resultset = state.executeQuery();
+            if (resultset.next()){
+                String pseudo = resultset.getString("pseudo");
+                String email = resultset.getString("email");
+                Date birthday = resultset.getDate("birthday");
+                int banned = resultset.getInt("banned");
+                int isAdmin = resultset.getInt("isAdmin");
+                User usr = new User(uid, pseudo, email, birthday, banned, isAdmin);
+                return usr;
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String getUserPassword (int uid) {
+        DB myInstance = DB.getInstance();
+        String sql = "SELECT password FROM User WHERE idUser = ? ;";
+        try ( PreparedStatement state = myInstance.connect.prepareStatement(sql)){
+            state.setLong(1, uid);
+            ResultSet resultset = state.executeQuery();
+            if (resultset.next()){
+                return ( resultset.getString("password") );
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
