@@ -1,4 +1,4 @@
-<%@ page import="data.DB,data.Jeu" %>
+<!--<%@ page import="data.DB,data.Jeu" %>-->
 <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
 <html xml:lang="fr" lang="fr">
 
@@ -11,6 +11,7 @@
 	<img id="logo" src="/ressources/img/logo.png">
 	<script>
 		let logged = <%= session.getAttribute("uid") != null %>
+		let admin = <%= session.getAttribute("isAdmin") == 1 %>
 	</script>
 	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 	<script type="text/javascript" src="/ressources/js/games.js"></script>

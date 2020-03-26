@@ -19,6 +19,7 @@
     <script type="text/javascript" src="/ressources/js/games/<%=j.getGid()%>.js"></script>
 	<script>
 		let logged = <%= session.getAttribute("uid") != null %>
+		let admin = <%= session.getAttribute("isAdmin") == 1 %>
 	</script>
 	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>

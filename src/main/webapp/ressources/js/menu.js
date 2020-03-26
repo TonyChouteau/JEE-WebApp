@@ -37,14 +37,15 @@ function getItems(menu){
 
 function makeMenu() {
 
-	let menu = []
+	let menu = [{
+			"name" : "Games",
+			"href" : "/home",
+			"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
+		}
+	]
 
 	if (logged){
-		menu = [{
-				"name" : "Games",
-				"href" : "/home",
-				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
-			},{
+		menu.push(...[{
 				"name" : "My profile",
 				"href" : "/player",
 				"img"  : "/ressources/img/baseline_account_circle_black_18dp.png",
@@ -53,14 +54,26 @@ function makeMenu() {
 				"href" : "/signout",
 				"img"  : "/ressources/img/baseline_power_settings_new_black_18dp.png",
 			}
-		]
-	} else {
-		menu = [{
+		]);
+	}
+	if (admin){
+		menu.push(...[{
+				"name" : "Current",
+				"href" : "/home",
+				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
+			},{
+				"name" : "Past",
+				"href" : "/home",
+				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
+			},{
+				"name" : "Players",
+				"href" : "/home",
+				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
+			},{
 				"name" : "Games",
 				"href" : "/home",
 				"img"  : "/ressources/img/baseline_view_list_black_18dp.png"
-			}
-		]
+		}]);
 	}
 
 	let content = document.getElementById("menu-panel").innerHTML;
