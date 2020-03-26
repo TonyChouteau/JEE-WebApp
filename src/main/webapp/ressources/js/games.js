@@ -2,7 +2,11 @@
 function loadGames(){
     //fetch to get past games
     
-    let content = document.getElementById("games-list").innerHTML;
+    let content = `
+        <h3 class="game-list-title">
+            Available Games 
+        </h3>
+    `
 
     fetch('/getGames').then(response => {
         return response.json()
