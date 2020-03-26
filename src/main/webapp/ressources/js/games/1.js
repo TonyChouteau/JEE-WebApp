@@ -23,6 +23,10 @@ function play(){
     }
 }
 function submitScore(){
+    playing = false;
+    document.getElementById("play-button").setAttribute("disabled","disabled");
+    document.getElementById("play-button").innerHTML = "End";
+
     fetch("/submitScore", {
         method:'POST',
         headers: {
@@ -32,6 +36,6 @@ function submitScore(){
             "uid"   : userID,
             "gid"   : gameID,
             "score" : score,
-        })
+        }
     })
 }

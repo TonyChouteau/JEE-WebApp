@@ -9,62 +9,28 @@
 	<title>Fluffy Gaming Center</title>
 	<link rel="shortcut icon" href="/ressources/img/logo.png">
 	<img id="logo" src="/ressources/img/logo.png">
-	<script type="text/javascript" src='/ressources/js/games/1.js'></script>
+	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>
 
-<body onload="loadGame()">
+<body>
 	<div id="page">
 		<div id="menu-panel">
-			<h1 id="menu">
-				<div class="menu-item">
-					<div>
-						Games
-					</div>
-				</div>
-				<div class="menu-item">
-					<div>
-						Players
-					</div>
-				</div>
-				<div class="menu-item">
-					<div>
-						Games
-					</div>
-				</div>
-			</h1>
-			<div class="verticalSeparator"></div>
-			<h1 id="title">
-				<div>
-					<%
-						if (session.getAttribute("username") != null) {
-					%>
-					<%= session.getAttribute("username") %>
-					<%
-						} else {
-					%>
-					<a href="/signin">Sign in</a> / <a href="/signup">Sign up</a>
-					<%
-						}
-					%>
-				</div>
-			</h1>
+			<%
+				if (session.getAttribute("username") != null) {
+			%>
+			<%= session.getAttribute("username") %>
+			<%
+				} else {
+			%>
+			<a href="/signin">Sign in</a> / <a href="/signup">Sign up</a>
+			<%
+				}
+			%>
 		</div>
 		<div id="content-panel">
-			<h3 id="game-title">
+			<h3 class="pageTitle">
 			</h3>
-			<div id="game" onclick="play()">
-				<h2 id="score">
-					0
-				</h2>
-			</div>
-			<div id="buttons">
-				<button id="play-button" class="button" onclick="playingButton()">
-					Play
-				</button>
-				<button class="button" onclick="submitScore()">
-					Submit
-				</button>
-			</div>
+			
 		</div>
 	</div>
 </body>

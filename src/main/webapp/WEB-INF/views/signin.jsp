@@ -7,6 +7,7 @@
     <title>Fluffy Gaming Center</title>
     <link rel="shortcut icon" href="/ressources/img/logo.png">
     <link rel="stylesheet" href="/ressources/css/style.css" />
+	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>
 
 <body>

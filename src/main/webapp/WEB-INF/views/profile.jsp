@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="/ressources/img/logo.png">
     <img id="logo" src="/ressources/img/logo.png">
     <script type="text/javascript" src="/ressources/js/profile.js"></script>
+	<script type="text/javascript" src="/ressources/js/menu.js"></script>
 </head>
 
 <body onload="loadData()">
@@ -17,31 +18,19 @@
         String username = session.getAttribute("username").toString();
     %>
     <div id="page">
-        <div id="menu-panel">
-            <h1 id="menu">
-                <div class="menu-item">
-                    <div>
-                        Games
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        Players
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div>
-                        Games
-                    </div>
-                </div>
-            </h1>
-            <div class="verticalSeparator"></div>
-            <h1 id="title">
-                <div>
-                    <%=username%>
-                </div>
-            </h1>
-        </div>
+		<div id="menu-panel" onload="makeMenu()">
+			<%
+				if (session.getAttribute("username") != null) {
+			%>
+			<%= session.getAttribute("username") %>
+			<%
+				} else {
+			%>
+			<a href="/signin">Sign in</a> / <a href="/signup">Sign up</a>
+			<%
+				}
+			%>
+		</div>
         <div id="content-panel">
             <div id="profile-top">
                 <div id="picture">
