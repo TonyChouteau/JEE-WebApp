@@ -131,6 +131,8 @@ public class Players extends HttpServlet {
         String birthday = u.getBirthday().toString();
         password = (password == null || password == "") ? p : password;
 
+        System.out.println(uid+" "+ username+" "+ email+" "+  password);
+
         if (db.editProfile(uid, username, email, password) == 0) {
             displayPage(req, resp, "/profile.jsp");
         } else {
