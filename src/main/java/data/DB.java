@@ -186,7 +186,7 @@ public class DB implements DBInt {
             state.setString(1, newUsername);
             state.setString(2, newEmail);
             state.setString(3, s);
-            state.setLong(5, uid);
+            state.setLong(4, uid);
             int result = state.executeUpdate();
 
         } catch (Exception e) {
