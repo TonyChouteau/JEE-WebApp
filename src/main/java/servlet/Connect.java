@@ -131,6 +131,7 @@ public class Connect extends HttpServlet {
         String username = req.getParameter("username");
 
         int uid = db.signin(username, req.getParameter("password"));
+        System.out.println(uid);
         User u = db.getUser(uid);
 
         if (uid >= 0) {
