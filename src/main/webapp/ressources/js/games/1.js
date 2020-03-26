@@ -29,8 +29,8 @@ function submitScore(){
             'Content-Type': 'application/json',
         },
         body: {
-            "uid"   : uid,
-            "gid"   : gid,
+            "uid"   : userID,
+            "gid"   : gameID,
             "score" : score,
         }
     })
