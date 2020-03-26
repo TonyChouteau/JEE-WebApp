@@ -49,6 +49,14 @@ public class Play extends HttpServlet {
                         postPlay(req, resp);
                     }
                     break;
+                case "/startGame":
+                    if (mode.equals("GET")) {
+                        getStartGame(req, resp);
+                    }
+                    else if (mode.equals("POST")) {
+                        postStartGame(req, resp);
+                    }
+                    break;
                 case "/currentGames":
                     if (mode.equals("GET")) {
                         getCurrentGames(req, resp);
@@ -81,6 +89,14 @@ public class Play extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void postStartGame(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        
+    }
+
+    private void getStartGame(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
     }
 
     private void postGetGames(HttpServletRequest req, HttpServletResponse resp) throws IOException {
