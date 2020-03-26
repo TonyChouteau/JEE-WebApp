@@ -149,7 +149,7 @@ public class Admin extends HttpServlet {
         resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
-    private void postUnban(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+    private void getUnban(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
         try {
             int banned = Integer.parseInt(req.getParameter("uid"));
             System.out.println(banned + " unbanned by " + uid);
@@ -161,11 +161,11 @@ public class Admin extends HttpServlet {
         }
     }
 
-    private void getUnban(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+    private void postUnban(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
         resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
-    private void postBan(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+    private void getBan(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
         try {
             int banned = Integer.parseInt(req.getParameter("uid"));
             System.out.println(banned + " banned by " + uid);
@@ -177,7 +177,7 @@ public class Admin extends HttpServlet {
         }
     }
 
-    private void getBan(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
+    private void postBan(HttpServletRequest req, HttpServletResponse resp, Integer uid) throws IOException {
         resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
