@@ -292,6 +292,35 @@ a, a:hover, a:active, a:focus {
     justify-content: center;
 }
 
+.player-id{
+    width: 10%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+.player-name{
+    width: 40%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+.player-address{
+    width: 40%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+.player-banabality{
+    width: 10%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+
 #logo {
     position: absolute;
     width: 7vh;

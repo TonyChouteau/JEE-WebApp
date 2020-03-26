@@ -23,8 +23,12 @@ function loadPlayers(){
                         `+data[i].pseudo+`
                     </div>
                     <div class="verticalSeparator"></div>
-                    <button     onclick="changeStateGame(`+ data[i].gid +`, `+ data[i].banned +`)" class="game player-availability" style="background-color:`+(data[i].banned?"green":"red")+`;">
-                        `+(data[i].banned?"available":"disable")+`
+                    <div class="game player-address">
+                        `+data[i].email+`
+                    </div>
+                    <div class="verticalSeparator"></div>
+                    <button     onclick="changeStateGame(`+ data[i].uid +`, `+ data[i].banned +`)" class="game player-banabality" style="background-color:`+(data[i].banned?"red":"green")+`;">
+                        `+(data[i].banned?"banned":"not banned")+`
                     </button>
                 </div>
             `;
@@ -33,10 +37,10 @@ function loadPlayers(){
     })
 }
 
-function changeStateGame(id, available){
-    console.log(id, available);
+function changeStateGame(id, banned){
+    console.log(id, banned);
 
-    if (available) {
+    if (!banned) {
         fetch("/ban?uid="+id).then(() => {loadPlayers()})
     } else {
         fetch("/unban?uid="+id).then(() => {loadPlayers()})
