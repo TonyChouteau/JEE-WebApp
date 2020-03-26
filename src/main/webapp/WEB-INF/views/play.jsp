@@ -142,8 +142,14 @@
         }
         let playing = false;
         let score = 0;
+
         function playingButton() {
             playing = !playing;
+            if (playing){
+                document.getElementById("play-button").innerHTML = "Pause"
+            } else {
+                document.getElementById("play-button").innerHTML = "Continue"
+            }
         }
         setInterval(() => {
             play()
@@ -152,8 +158,12 @@
             if (playing){
                 score ++;
                 document.getElementById("score").innerHTML = score;
-                console.log(score);
             }
+        }
+
+        function submitButton(){
+            playing = false;
+            //fetch POST score
         }
     </script>
 </head>
@@ -195,8 +205,11 @@
                 </h2>
             </div>
             <div id="buttons">
-                    <button class="button" onclick="playingButton()">
+                    <button id="play-button" class="button" onclick="playingButton()">
                         Play
+                    </button>
+                    <button class="button" onclick="submitButton()">
+                        Submit
                     </button>
             </div>
         </div>
