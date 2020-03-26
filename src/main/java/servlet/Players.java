@@ -124,16 +124,21 @@ public class Players extends HttpServlet {
         int uid = Integer.parseInt(req.getSession().getAttribute("uid").toString());
 
         User u = db.getUser(uid);
-        String p = db.getUserPassword(uid);
+        boolean res = true;
 
-        username = (username == null || username == "") ? u.getPseudo() : username;
-        email = (email == null || email == "") ? u.getEmail() : email;
-        String birthday = u.getBirthday().toString();
-        password = (password == null || password == "") ? p : password;
 
-        System.out.println(uid+" "+ username+" "+ email+" "+  password);
+        if (username != null && username != "" && username != u.getPseudo()) {
+            res = (db.editProfilePseudo(uid, username) == 0);
+        }
+        if (email != null && email != "" && email != u.getEmail()) {
+            res = (db.editProfileEmail(uid, email) == 0) & res;
+        }
+        if (password != null && password != "") {
+            res = (db.editProfilePassword(uid, password) == 0) & res;
+        }
 
-        if (db.editProfile(uid, username, email, password) == 0) {
+
+        if (res) {
             displayPage(req, resp, "/profile.jsp");
         } else {
             resp.sendError(HttpServletResponse.SC_CONFLICT);
