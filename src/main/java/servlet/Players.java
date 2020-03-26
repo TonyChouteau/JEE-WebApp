@@ -56,7 +56,7 @@ public class Players extends HttpServlet {
                         postGetListPlayers(req, resp);
                     }
                     break;
-                case "/getGetPlayer":
+                case "/getPlayer":
                     if (mode.equals("GET")) {
                         getGetPlayer(req, resp);
                     }
