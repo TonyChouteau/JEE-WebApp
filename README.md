@@ -1,9 +1,13 @@
-# Java Web Application using Embedded Tomcat - FluffyCorp
+## Java Web Application using Embedded Tomcat - FluffyCorp
 
-## Branche finale : Branche "propre"
+### Branche finale : 
+Branche "propre"
 
-## Chemin du .war : target/embeddedTomcatSample.war
+### Chemin du .war : 
+target/embeddedTomcatSample.war
 
-## Rapport : <en cours>
+### Rapport : 
+<en cours>
   
-## Vidéo de présentation : https://www.youtube.com/watch?v=PTqKOSmDRkk
+### Vidéo de présentation : 
+https://www.youtube.com/watch?v=PTqKOSmDRkk
