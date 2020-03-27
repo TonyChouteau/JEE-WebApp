@@ -1,3 +1,4 @@
+
 function getDuration(a, b) {
     let t = (new Date(b)-new Date(a))/1000/60/60;
     let h = Math.floor(t);
@@ -19,6 +20,7 @@ function loadPast(){
     fetch('/getPastGames').then(response => {
         return response.json()
     }).then(data => {
+        data.sort((a,b) => {return b.pid-a.pid})
         let adding = ""
         for (let i in data){
             adding+=`

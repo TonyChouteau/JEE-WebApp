@@ -118,6 +118,7 @@ a, a:hover, a:active, a:focus {
     width: 20%;
     height: 100%;
     font-size: 20px;
+    overflow: hidden;
 }
 #game-title{
     text-align: center;
@@ -226,7 +227,7 @@ a, a:hover, a:active, a:focus {
     padding: 0;
     background: rgb(228, 228, 228);
     height: 40px;
-    width: 40vh;
+    width: 400px;
     min-width: 295px;
     margin: 0 auto;
     border: 0;
@@ -352,6 +353,7 @@ a, a:hover, a:active, a:focus {
     flex-direction : column;
     text-align: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .past-duration{
@@ -370,14 +372,22 @@ a, a:hover, a:active, a:focus {
     justify-content: center;
 }
 .player-name{
-    width: 40%;
+    width: 26.6%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.player-address{
+    width: 26.6%;
     display: flex;
     flex-direction : column;
     text-align: center;
     justify-content: center;
 }
-.player-address{
-    width: 40%;
+.player-played{
+    width: 26.6%;
     display: flex;
     flex-direction : column;
     text-align: center;
@@ -467,20 +477,6 @@ a, a:hover, a:active, a:focus {
 .login-button:active {
     background: rgb(235, 66, 223);
     color: white;
-}
-
-
-.register-input {
-    margin: 0;
-    padding: 0;
-    background: rgb(228, 228, 228);
-    height: 40px;
-    width: 40vh;
-    min-width: 295px;
-    margin: 0 auto;
-    border: 0;
-    text-align: center;
-    border-radius: 5px;
 }
 
 .register-button {
