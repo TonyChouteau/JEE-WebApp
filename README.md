@@ -9,7 +9,7 @@ Branche "propre"
 target/embeddedTomcatSample.war
 
 ### Rapport : 
-/CR_JEE.pdf
+/CR_JEE_FluffyCorp.pdf
   
 ### Vidéo de présentation : 
 https://www.youtube.com/watch?v=PTqKOSmDRkk
