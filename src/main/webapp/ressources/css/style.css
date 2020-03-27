@@ -66,13 +66,13 @@ a, a:hover, a:active, a:focus {
     color: grey;
     border: 1px solid grey;
 }
-.button:disabled:hover {
+.register-button:disabled:hover {
     background-color: #aaa;
     color: grey;
     border: 1px solid grey;
     cursor: not-allowed;
 }
-.button:disabled:active {
+.register-button:disabled:active {
     background-color: #aaa;
     color: grey;
     border: 1px solid grey;

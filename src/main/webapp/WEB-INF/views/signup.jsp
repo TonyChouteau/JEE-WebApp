@@ -24,30 +24,29 @@
 				<h3 class="centered-text">
 					E-mail :
 				</h3>
-				<input class="register-input" type="email" id="femail" name="email" placeholder="">
+				<input class="register-input" type="email" id="femail" name="email" placeholder="" onchange="verify()">
 
 				<h3 class="centered-text">
 					Username :
 				</h3>
-				<input class="register-input" type="text" id="fusername" name="username" placeholder="">
+				<input class="register-input" type="text" id="fusername" name="username" placeholder="" onchange="verify()">
 
 				<h3 class="centered-text">
 					Birthday :
 				</h3>
-				<input class="register-input" type="date" id="fbirthday" name="birthday" placeholder="">
+				<input class="register-input" type="date" id="fbirthday" name="birthday" placeholder="" onchange="verify()">
 
 				<h3 class="centered-text">
 					Password :
 				</h3>
-				<input class="register-input" type="password" id="fpassword1" name="password" placeholder="">
+				<input class="register-input" type="password" id="fpassword1" name="password" placeholder="" onchange="verify()">
 
 				<h3 class="centered-text">
 					Confirm password :
 				</h3>
-				<input class="register-input" type="password" id="fpassword2" onchange="verifySecondPassword()"
-					name="password" placeholder="">
+				<input class="register-input" type="password" id="fpassword2" name="password2" onchange="verify()" placeholder="">
 				<h1></h1>
-				<input class="register-button" type="submit" value="Register" />
+				<input class="register-button" id="post-button" type="submit" value="Register" disabled="disabled"/>
 			</form>
 			<h4>
 				<span>Already registered ?</span> <a href="./signin" style="color:rgb(235, 66, 223);">Sign in</a>

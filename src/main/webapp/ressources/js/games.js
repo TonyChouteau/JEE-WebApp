@@ -40,6 +40,8 @@ function loadGames(){
             document.getElementById("games-list").innerHTML = content+adding;
         })
     })
-    
-    
 }
+
+setInterval(() => {
+    loadGames()
+},3000)

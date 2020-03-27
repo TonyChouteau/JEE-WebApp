@@ -48,28 +48,28 @@
                                 <h3 class="centered-text">
                                     E-mail :
                                 </h3>
-                                <input class="register-input" type="email" id="femail" name="email" placeholder="">
+                                <input class="register-input" type="email" id="femail" name="email" placeholder="" onchange="verify()">
                 
                                 <h3 class="centered-text">
                                     Username :
                                 </h3>
-                                <input class="register-input" type="text" id="fusername" name="username" placeholder="">
+                                <input class="register-input" type="text" id="fusername" name="username" placeholder="" onchange="verify()">
                             </div>
                             <div class="column-profile">
                                 <h3 class="centered-text">
                                     Password :
                                 </h3>
-                                <input class="register-input" type="password" id="fpassword1" name="password" placeholder="">
+                                <input class="register-input" type="password" id="fpassword1" name="password" placeholder="" onchange="verify()">
                 
                                 <h3 class="centered-text">
                                     Confirm password :
                                 </h3>
-                                <input class="register-input" type="password" id="fpassword2" onchange="verifySecondPassword()" name="password" placeholder="">
+                                <input class="register-input" type="password" id="fpassword2" onchange="verify()" name="password" placeholder="">
                                 <h1></h1>
                             </div>
                         </div>
                         <div class="sub-container">
-                            <input class="register-button" type="submit" value="Save" />
+                            <input id="post-button" class="register-button" type="submit" value="Save"/>
                         </div>
                     </form>
                 </div>
