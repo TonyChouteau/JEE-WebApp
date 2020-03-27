@@ -1,4 +1,6 @@
-# Java Web Application using Embedded Tomcat - FluffyCorp
+# Java Web Application using Embedded Tomcat
+
+## Rendus - Équipe FluffyCorp
 
 ### Branche finale : 
 Branche "propre"
@@ -11,20 +13,6 @@ En cours
   
 ### Vidéo de présentation : 
 https://www.youtube.com/watch?v=PTqKOSmDRkk
-
-###########################################################################
-
-# Java Web Application using Embedded Tomcat
-
-# Team 6 : FluffyCorp
-Branche de code à regarder : propre
-
-Chemin du .war : ./target/embeddedTomcatSample.war
-
-Rapport : .....
-
-Vidéo de presentation : ....
-
 
 ## Prerequisites
 
