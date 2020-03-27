@@ -64,7 +64,7 @@
                                 <h3 class="centered-text">
                                     Confirm password :
                                 </h3>
-                                <input class="register-input" type="password" id="fpassword2" onchange="verify()" name="password" placeholder="">
+                                <input class="register-input" type="password" id="fpassword2" onchange="verify()" name="password2" placeholder="">
                                 <h1></h1>
                             </div>
                         </div>
