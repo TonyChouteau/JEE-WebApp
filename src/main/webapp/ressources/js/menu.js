@@ -65,22 +65,22 @@ function makeMenu() {
 		menu.push(...[{
 				"name" : "Current",
 				"href" : "/currentGames",
-				"img"  : "/ressources/img/baseline_view_list_black_18dp.png",
+				"img"  : "/ressources/img/baseline_play_arrow_black_18dp.png",
 				"admin" : true,
 			},{
 				"name" : "Past",
 				"href" : "/pastGames",
-				"img"  : "/ressources/img/baseline_view_list_black_18dp.png",
+				"img"  : "/ressources/img/baseline_fast_rewind_black_18dp.png",
 				"admin" : true,
 			},{
 				"name" : "Players",
 				"href" : "/listPlayers",
-				"img"  : "/ressources/img/baseline_view_list_black_18dp.png",
+				"img"  : "/ressources/img/baseline_people_black_18dp.png",
 				"admin" : true,
 			},{
 				"name" : "Games",
 				"href" : "/games",
-				"img"  : "/ressources/img/baseline_view_list_black_18dp.png",
+				"img"  : "/ressources/img/baseline_library_add_check_black_18dp.png",
 				"admin" : true,
 		}]);
 	}
