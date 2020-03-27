@@ -1,4 +1,4 @@
-## Java Web Application using Embedded Tomcat - FluffyCorp
+# Java Web Application using Embedded Tomcat - FluffyCorp
 
 ### Branche finale : 
 Branche "propre"
