@@ -317,14 +317,21 @@ a, a:hover, a:active, a:focus {
     justify-content: center;
 }
 .current-user{
-    width: 40%;
+    width: 26.6%;
     display: flex;
     flex-direction : column;
     text-align: center;
     justify-content: center;
 }
 .current-game{
-    width: 40%;
+    width: 26.6%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+.current-date{
+    width: 26.6%;
     display: flex;
     flex-direction : column;
     text-align: center;
@@ -340,7 +347,15 @@ a, a:hover, a:active, a:focus {
 }
 
 .past-info{
-    width: 22.5%;
+    width: 20%;
+    display: flex;
+    flex-direction : column;
+    text-align: center;
+    justify-content: center;
+}
+
+.past-duration{
+    width: 10%;
     display: flex;
     flex-direction : column;
     text-align: center;

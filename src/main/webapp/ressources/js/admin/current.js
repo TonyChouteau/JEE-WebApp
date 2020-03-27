@@ -13,7 +13,6 @@ function loadCurrent(){
     }).then(data => {
         let adding = ""
         for (let i in data){
-            console.log(i)
             adding+=`
                 <div class="gamelist-item">
                     <div class="game current-id">
@@ -26,6 +25,10 @@ function loadCurrent(){
                     <div class="verticalSeparator"></div>
                     <div class="game current-game">
                         `+data[i].gamename+`
+                    </div>
+                    <div class="verticalSeparator"></div>
+                    <div class="game current-date">
+                        `+data[i].gameBeginD+`
                     </div>
                     <div class="verticalSeparator"></div>
                     <button onclick="cancelGame(`+ data[i].idUser +`)" class="game current-cancel">
