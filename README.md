@@ -9,7 +9,7 @@ Branche "propre"
 target/embeddedTomcatSample.war
 
 ### Rapport : 
-En cours
+/CR_JEE.pdf
   
 ### Vidéo de présentation : 
 https://www.youtube.com/watch?v=PTqKOSmDRkk
