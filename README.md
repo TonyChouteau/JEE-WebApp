@@ -7,7 +7,7 @@ Branche "propre"
 target/embeddedTomcatSample.war
 
 ### Rapport : 
-En cours
+Fini
   
 ### Vidéo de présentation : 
 https://www.youtube.com/watch?v=PTqKOSmDRkk
